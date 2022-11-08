@@ -1,0 +1,13 @@
+.ui.right.floated.header.margin-x-zero
+  = link_to "Invite a user", new_user_invitation_path, class: "ui button"  
+
+.ui.left.floated.header
+  Users
+
+
+%table.ui.table
+  %thead
+    = render partial: "organization_memberships/table/header"
+
+  %tbody
+    = render collection: @organization_memberships, partial: "organization_memberships/table/row", as: :organization_membership    

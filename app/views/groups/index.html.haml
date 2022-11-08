@@ -1,0 +1,14 @@
+.ui.right.floated.header.margin-x-zero
+  = link_to "New Group", new_group_path, class: "ui button"  
+
+.ui.left.floated.header
+  Groups
+
+=turbo_frame_tag :groups do
+  %table.ui.table.striped
+    %thead
+      = render partial: "groups/table/header", object: Group
+
+    %tbody
+      = render collection: @groups, partial: "groups/table/row", as: :group
+

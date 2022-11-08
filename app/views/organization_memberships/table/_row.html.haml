@@ -1,0 +1,25 @@
+- user = organization_membership.user
+%tr
+  %td
+    = organization_membership.user.email
+  %td
+    -if user.invited_by_id && !user.invitation_accepted_at
+      .ui.label.oran
+        Invited #{time_ago_in_words user.invitation_created_at} ago
+    -elsif user.invited_by_id && user.invitation_accepted_at
+      .ui.label.teal
+        Joined #{time_ago_in_words user.invitation_accepted_at} ago
+    -else
+      .ui.label.teal
+        Member
+  
+  %td
+    
+    - organization_membership.groups.each do |group|
+      .ui.label
+        .ui.mini.empty.circular.label{ style: "background-color: #{group.color};"}
+        = group.name
+  %td.collapsing.right.aligned
+    = link_to 'Edit', edit_organization_membership_path(organization_membership), class: "ui button"
+    = link_to organization_membership, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: "ui negative icon button" do
+      %i.icon.trash

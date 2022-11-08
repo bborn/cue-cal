@@ -1,0 +1,14 @@
+.ui.right.floated.header.margin-x-zero
+  = link_to "Invite a user", new_user_invitation_path, class: "ui button"  
+
+.ui.left.floated.header
+  Users
+
+=turbo_frame_tag :users do
+  %table.ui.table.striped
+    %thead
+      = render partial: "users/table/header", object: User
+
+    %tbody
+      = render collection: @memberships, partial: "users/table/row", as: :membership
+

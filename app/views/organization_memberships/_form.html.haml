@@ -1,0 +1,16 @@
+= form_with model: @organization_membership, class: 'ui form' do |f|
+  - if @organization_membership.errors.any?
+    .ui.error.message.visible
+      %h2= "#{pluralize(@organization_membership.errors.count, "error")} prohibited this organization_membership from being saved:"
+      %ul
+        - @organization_membership.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label "Groups"
+    = f.collection_select :group_ids, Group.all, :id, :name, {}, { multiple: true, class: 'ui selection dropdown' }
+  
+  
+  
+  .actions
+    = f.submit 'Save', class: 'ui button primary'

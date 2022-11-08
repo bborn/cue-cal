@@ -1,0 +1,10 @@
+
+
+<%= form_for @organization, url: onboarding_path do |f| %>
+
+<%= f.label 'Your Organization Name' %>
+<%= f.text_field :name %>
+
+<%= f.submit "Save" %>
+
+<% end %>

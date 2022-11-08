@@ -1,0 +1,23 @@
+.ui.fixed.inverted.menu
+  .ui.container
+
+
+    %a.header.item(href=root_path)
+      %i.icon.theater.masks
+      Cue
+      - if current_tenant
+        \- 
+        #{current_tenant.name}
+
+    
+    - if current_user
+      = link_to "Productions", productions_path, class: 'item'
+      = link_to "Groups", groups_path, class: 'item'
+      = link_to "Users", organization_memberships_path, class: 'item'
+
+    
+    .right.menu      
+      - if current_user          
+        = button_to destroy_user_session_path, method: :delete, data: {turbo: false}, class: 'ui item button' do
+          %i.icon.power.off
+          Log out

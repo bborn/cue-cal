@@ -1,0 +1,9 @@
+%h1 User
+
+= form_with model: @user, class: 'ui form' do |f|
+  .field
+    = f.label :email
+    = f.text_field :email
+
+  .actions
+    = f.submit 'Update', class: 'ui button'

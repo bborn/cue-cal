@@ -1,0 +1,30 @@
+!!!
+%html
+  %head
+    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Cue
+    %meta{content: "width=device-width,initial-scale=1", name: "viewport"}/
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag "application", "data-turbo-track": "reload"
+    = javascript_include_tag "application", "data-turbo-track": "reload", defer: true
+
+    %script{src: "https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.min.js"}
+    %link{href: "https://cdn.jsdelivr.net/npm/fomantic-ui@2.9.0/dist/semantic.min.css", rel: "stylesheet", type: "text/css"}/
+    %script{src: "https://cdn.jsdelivr.net/npm/fomantic-ui@2.9.0/dist/semantic.min.js"}
+
+  %body
+
+    .ui.container.padding-top-large
+      - if notice
+        %p.ui.info.message= notice      
+      - if alert 
+        %p.ui.warning.message= alert
+
+      = render partial: "shared/global_menu"
+    
+    
+      = yield
+
+
+      

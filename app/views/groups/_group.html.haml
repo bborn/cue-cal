@@ -1,0 +1,13 @@
+%div{id: "#{dom_id group}"}
+  %p
+    %strong Name:
+    = group.name
+  %p
+    %strong Color:
+    = group.color
+
+  - if group.memberships.any?
+    .ui.list.very.relaxed.divided
+      - group.memberships.each do |membership|
+        .item
+          = link_to membership.user.email, membership

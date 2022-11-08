@@ -1,0 +1,58 @@
+$spacer: 16px;
+$spacers: (
+	zero: 0,
+	mini: (
+		$spacer * 0.25,
+	),
+	tiny: (
+		$spacer * 0.5,
+	),
+	small: $spacer,
+	medium: (
+		$spacer * 2,
+	),
+	large: (
+		$spacer * 3,
+	),
+	huge: (
+		$spacer * 4.5,
+	),
+	giant: (
+		$spacer * 6.5,
+	),
+	neg-one: (
+		$spacer * -1,
+	),
+);
+
+$directions: (
+	top: t,
+	right: r,
+	bottom: b,
+	left: l,
+);
+
+@each $prop, $letter in (margin: m, padding: p) {
+	// loop through top, right, bottom, and left
+	@each $direction, $d in $directions {
+		// loop through the spacers we've set
+		@each $unit, $rem in $spacers {
+			.#{$prop}-#{$direction}-#{$unit} {
+				#{$prop}-#{$direction}: #{$rem} !important;
+			}
+
+			// add in x-axis and y-axis spacing
+			.#{$prop}-x-#{$unit} {
+				#{$prop}-left: $rem !important;
+				#{$prop}-right: $rem !important;
+			}
+			.#{$prop}-y-#{$unit} {
+				#{$prop}-top: $rem !important;
+				#{$prop}-bottom: $rem !important;
+			}
+			.#{$prop}-xy-#{$unit} {
+				#{$prop}: $rem !important;
+			}
+		}
+	}
+}

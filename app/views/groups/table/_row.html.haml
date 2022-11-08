@@ -1,0 +1,6 @@
+%tr
+  %td= link_to group.name, group
+  %td
+    = pluralize group.users.count, 'user'
+  %td.collapsing.right.aligned
+    = link_to "Edit", edit_group_path(group), class: 'ui button'

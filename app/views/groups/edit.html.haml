@@ -1,0 +1,5 @@
+%h1 Editing group
+
+.ui.segment
+  =turbo_frame_tag @group, :edit do
+    = render "form", group: @group

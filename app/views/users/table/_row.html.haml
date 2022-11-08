@@ -1,0 +1,15 @@
+-user = membership.user
+
+%tr
+  %td
+    = user.email
+
+  %td
+    -if user.invited_by_id && !user.invitation_accepted_at
+      Invited #{time_ago_in_words user.invitation_created_at} ago
+    -elsif user.invited_by_id && user.invitation_accepted_at
+      Joined #{time_ago_in_words user.invitation_accepted_at} ago
+    -else
+      Member
+  %td.collapsing.right.aligned
+    = link_to "Edit", edit_organization_membership_path(user), class: "ui button"

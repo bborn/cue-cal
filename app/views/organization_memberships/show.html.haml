@@ -1,0 +1,10 @@
+.ui.segment
+  %p
+    %b User:
+    = @organization_membership.user.email
+  %p
+    %b Groups:
+    = @organization_membership.groups.map(&:name).join(', ')
+
+= link_to 'Edit', edit_organization_membership_path(@organization_membership), class: 'ui button'
+= link_to 'Back', organization_memberships_path, class: 'ui button'
