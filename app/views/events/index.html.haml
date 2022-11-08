@@ -1,0 +1,14 @@
+.ui.right.floated.header.margin-x-zero
+  = link_to "New Event", new_event_path, class: "ui button"  
+
+.ui.left.floated.header
+  Events
+
+=turbo_frame_tag :events do
+  %table.ui.table.striped
+    %thead
+      = render partial: "events/table/header", object: Event
+
+    %tbody
+      = render collection: @events, partial: "events/table/row", as: :event
+

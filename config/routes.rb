@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :events
   get "users/invite"
   resources :groups
   devise_for :users, controllers: { invitations: "users/invitations" }

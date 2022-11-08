@@ -1,0 +1,25 @@
+= form_with model: @event, class: "ui form" do |f|
+  - if @event.errors.any?
+    #error_explanation.ui.error.message.visible
+      %h2= "#{pluralize(@event.errors.count, "error")} prohibited this event from being saved:"
+      %ul
+        - @event.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :start_time
+    = f.datetime_field :start_time
+  .field
+    = f.label :end_time
+    = f.datetime_field :end_time
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :description
+    = f.text_area :description
+  .field
+    = f.label :production
+    = f.collection_select :production_id, Production.all, :id, :name
+  .actions
+    = f.submit 'Save', class: 'ui button primary'
