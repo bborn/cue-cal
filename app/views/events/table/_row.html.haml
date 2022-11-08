@@ -6,6 +6,9 @@
       to
       = event.end_time
   %td
+    = render collection: event.groups, partial: 'groups/shared/label', as: :group
+
+  %td
     = simple_format event.description
   %td.collapsing.right.aligned
     = link_to "Edit", edit_event_path(event), class: 'ui button'

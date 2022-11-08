@@ -1,6 +1,7 @@
 %h1 Editing event
 
-= render 'form'
+=turbo_frame_tag @event do
+  = render 'form'
 
 = link_to 'Show', @event
 \|

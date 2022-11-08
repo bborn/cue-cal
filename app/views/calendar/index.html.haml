@@ -1,0 +1,6 @@
+
+- @event = Event.last
+= link_to 'test',[:flyout, @event], data: { turbo_frame: 'flyout' }
+
+#calendar.ui.segment{data: {controller: "calendar"}}
+  %div{data: {"calendar_target": 'calendar'}}

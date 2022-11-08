@@ -6,25 +6,26 @@
     %meta{content: "width=device-width,initial-scale=1", name: "viewport"}/
     = csrf_meta_tags
     = csp_meta_tag
-    = stylesheet_link_tag "application", "data-turbo-track": "reload"
-    = javascript_include_tag "application", "data-turbo-track": "reload", defer: true
+    = stylesheet_link_tag "style", "application", "data-turbo-track": "reload"
 
     %script{src: "https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.min.js"}
+    = javascript_include_tag "application", "data-turbo-track": "reload", defer: true
+  
     %link{href: "https://cdn.jsdelivr.net/npm/fomantic-ui@2.9.0/dist/semantic.min.css", rel: "stylesheet", type: "text/css"}/
-    %script{src: "https://cdn.jsdelivr.net/npm/fomantic-ui@2.9.0/dist/semantic.min.js"}
 
   %body
+    = render partial: "shared/global_menu"      
+    = turbo_frame_tag :flyout, class: 'ui flyout'
 
-    .ui.container.padding-top-large
-      - if notice
-        %p.ui.info.message= notice      
-      - if alert 
-        %p.ui.warning.message= alert
-
-      = render partial: "shared/global_menu"
-    
-    
-      = yield
+    .pusher
+      .ui.container.padding-top-huge
+        - if notice
+          %p.ui.info.message= notice      
+        - if alert 
+          %p.ui.warning.message= alert
 
 
-      
+        = yield
+
+
+        

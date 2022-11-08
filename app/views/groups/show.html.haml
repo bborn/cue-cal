@@ -3,6 +3,4 @@
   = turbo_frame_tag @group do
     = render @group
 
-= link_to "Edit", edit_group_path(@group), class: "ui button primary"
-= link_to "Back", groups_path, class: "ui button"
-= button_to "Destroy this group", @group, method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "ui button negative"
+= render partial: "shared/resource/actions", object: @group, as: :resource

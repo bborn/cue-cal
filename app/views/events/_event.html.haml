@@ -1,0 +1,10 @@
+
+%p
+  %strong Name:
+  = event.name
+%p
+  %strong Description:
+  = event.description
+
+- if event.groups.any?
+  = render collection: event.groups, partial: 'groups/shared/label', as: :group

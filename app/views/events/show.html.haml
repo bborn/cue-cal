@@ -1,21 +1,6 @@
-%p#notice= notice
 
-%p
-  %b Start time:
-  = @event.start_time
-%p
-  %b End time:
-  = @event.end_time
-%p
-  %b Name:
-  = @event.name
-%p
-  %b Description:
-  = @event.description
-%p
-  %b Production:
-  = @event.production
+.ui.segment
+  = turbo_frame_tag @event do
+    = render @event
 
-= link_to 'Edit', edit_event_path(@event)
-\|
-= link_to 'Back', events_path
+= render partial: "shared/resource/actions", object: @event, as: :resource

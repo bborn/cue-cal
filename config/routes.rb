@@ -1,21 +1,20 @@
 Rails.application.routes.draw do
-  resources :events
-  get "users/invite"
-  resources :groups
   devise_for :users, controllers: { invitations: "users/invitations" }
 
-  resources :organization_memberships, path: "users"
-  # resources :users
-
-  # do
-  #   # collection do
-  #   #   match :invite, via: [:get, :post]
-  #   # end
-  # end
-
-  match :onboarding, to: "onboarding#index", via: [:get, :post]
+  get "calendar", to: "calendar#index"
+  resources :events do
+    member do
+      get :flyout
+    end
+  end
+  get "users/invite"
 
   resources :productions
+
+  resources :groups
+  resources :organization_memberships, path: "users"
+
+  match :onboarding, to: "onboarding#index", via: [:get, :post]
 
   # Defines the root path route ("/")
   root "productions#index"

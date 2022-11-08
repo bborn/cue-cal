@@ -2,8 +2,4 @@
   = turbo_frame_tag @production do
     = render @production
 
-= link_to "Edit", edit_production_path(@production), class: 'ui button'
-
-= link_to "Back", productions_path, class: 'ui button tertiary'
-  
-  
+= render partial: "shared/resource/actions", object: @production, as: :resource

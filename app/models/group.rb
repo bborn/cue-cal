@@ -5,4 +5,8 @@ class Group < ApplicationRecord
 
   has_many :memberships, through: :group_memberships, source: :organization_membership
   has_many :users, through: :memberships
+
+  has_many :event_groups, dependent: :destroy
+  has_many :events, through: :event_groups
+  # Ex:- scope :active, -> {where(:active => true)}]
 end

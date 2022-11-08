@@ -1,0 +1,8 @@
+- hide ||= []
+- flyout || false
+
+= link_to "Edit", [:edit, resource, flyout: flyout], class: "ui button primary"
+= link_to "Destroy", resource, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "ui button negative"
+
+- unless hide.include?(:back)
+  = link_to "Go back", resource.class, class: "ui button tertiary"

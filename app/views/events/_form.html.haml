@@ -1,4 +1,7 @@
 = form_with model: @event, class: "ui form" do |f|
+
+  = hidden_field_tag :flyout, params[:flyout] || @editing
+
   - if @event.errors.any?
     #error_explanation.ui.error.message.visible
       %h2= "#{pluralize(@event.errors.count, "error")} prohibited this event from being saved:"
@@ -6,12 +9,29 @@
         - @event.errors.full_messages.each do |message|
           %li= message
 
-  .field
-    = f.label :start_time
-    = f.datetime_field :start_time
-  .field
-    = f.label :end_time
-    = f.datetime_field :end_time
+
+  .two.fields
+    .field
+      %label Start date
+      #rangestart.ui.calendar
+        .ui.input.left.icon
+          %i.calendar.icon
+          = f.text_field :start_time, placeholder: "Start"
+    .field
+      %label End date
+      #rangeend.ui.calendar
+        .ui.input.left.icon
+          %i.calendar.icon
+          = f.text_field :end_time, placeholder: "Start"
+
+
+
+  -# .field
+  -#   = f.label :start_time
+  -#   = f.datetime_field :start_time
+  -# .field
+  -#   = f.label :end_time
+  -#   = f.datetime_field :end_time
   .field
     = f.label :name
     = f.text_field :name
@@ -21,5 +41,14 @@
   .field
     = f.label :production
     = f.collection_select :production_id, Production.all, :id, :name
+
+  .field
+    = f.label :groups
+    = f.collection_select :group_ids, Group.all, :id, :name, {}, { multiple: true, class: 'ui fluid search dropdown'}
+
+
+
   .actions
     = f.submit 'Save', class: 'ui button primary'
+
+

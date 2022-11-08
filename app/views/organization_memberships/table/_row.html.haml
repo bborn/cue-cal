@@ -14,11 +14,7 @@
         Member
   
   %td
-    
-    - organization_membership.groups.each do |group|
-      .ui.label
-        .ui.mini.empty.circular.label{ style: "background-color: #{group.color};"}
-        = group.name
+    = render collection: organization_membership.groups, partial: 'groups/shared/label', as: :group
   %td.collapsing.right.aligned
     = link_to 'Edit', edit_organization_membership_path(organization_membership), class: "ui button"
     = link_to organization_membership, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: "ui negative icon button" do
