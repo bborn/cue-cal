@@ -1,6 +1,7 @@
 
-.ui.segment
-  = turbo_frame_tag @event do
-    = render @event
-
-= render partial: "shared/resource/actions", object: @event, as: :resource
+- if params[:flyout]
+  = render template: "shared/resource/flyout_show", locals: { resource: @event }
+- else
+  .ui.segment
+    =turbo_frame_tag do
+      =render @event

@@ -15,14 +15,12 @@
 
   %body
     = render partial: "shared/global_menu"      
-    = turbo_frame_tag :flyout, class: 'ui flyout'
+    = turbo_frame_tag :flyout, class: 'ui flyout wide right'
 
     .pusher
       .ui.container.padding-top-huge
-        - if notice
-          %p.ui.info.message= notice      
-        - if alert 
-          %p.ui.warning.message= alert
+        = render partial: "shared/flash_messages"
+        
 
 
         = yield

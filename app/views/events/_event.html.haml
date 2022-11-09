@@ -1,10 +1,26 @@
+- wrapper ||= ""
+- hide ||= []
 
-%p
-  %strong Name:
-  = event.name
-%p
-  %strong Description:
-  = event.description
+= turbo_frame_tag event, class: wrapper do
+  .ui.header 
+    Event
+    .sub.header
+      -if event.start_time
+        = local_time event.start_time
+      - if event.end_time
+        to
+        = local_time event.end_time
+  .content
+    %p
+      %strong Name:
+      = event.name
+    %p
+      %strong Description:
+      = event.description
 
-- if event.groups.any?
-  = render collection: event.groups, partial: 'groups/shared/label', as: :group
+    - if event.groups.any?
+      = render collection: event.groups, partial: 'groups/shared/label', as: :group
+
+  .actions.right.margin-top-large   
+    = render partial: "shared/resource/actions", object: event, as: :resource
+

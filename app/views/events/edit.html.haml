@@ -1,8 +1,5 @@
 %h1 Editing event
 
 =turbo_frame_tag @event do
-  = render 'form'
+  = render 'form', object: @event, as: :event
 
-= link_to 'Show', @event
-\|
-= link_to 'Back', events_path

@@ -8,26 +8,23 @@ class EventsController < BaseController
 
   # GET /events/1 or /events/1.json
   def show
-  end
-
-  def flyout
+    if params[:flyout]
+      render template: "shared/resource/flyout_show", locals: { resource: @event }
+    end
   end
 
   # GET /events/new
   def new
     @event = Event.new
+    if params[:flyout]
+      render template: "shared/resource/flyout_new", locals: { resource: @event }
+    end
   end
 
   # GET /events/1/edit
   def edit
     respond_to do |format|
-      format.html {
-        if params[:flyout]
-          @editing = true
-          render action: :flyout and return
-        else
-        end
-      }
+      format.html { }
     end
   end
 
@@ -37,7 +34,9 @@ class EventsController < BaseController
 
     respond_to do |format|
       if @event.save
-        format.html { redirect_to event_url(@event), notice: "Event was successfully created." }
+        format.html {
+          redirect_to event_path(@event, flyout: params[:flyout]), notice: "Event was successfully created."
+        }
         format.json { render :show, status: :created, location: @event }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -51,7 +50,7 @@ class EventsController < BaseController
     respond_to do |format|
       if @event.update(event_params)
         format.html {
-          redirect_to params[:flyout] ? flyout_event_url(@event) : event_url(@event), notice: "Event was successfully updated."
+          redirect_to event_url(@event), notice: "Event was successfully updated."
         }
         format.json { render :show, status: :ok, location: @event }
       else
@@ -66,7 +65,15 @@ class EventsController < BaseController
     @event.destroy
 
     respond_to do |format|
-      format.html { redirect_to events_url, notice: "Event was successfully destroyed." }
+      format.html {
+        redirect_url = events_url
+
+        if params[:flyout]
+          render template: "shared/resource/flyout_destroy", locals: { resource: @event } and return
+        else
+          redirect_to redirect_url, notice: "Event was successfully destroyed."
+        end
+      }
       format.json { head :no_content }
     end
   end

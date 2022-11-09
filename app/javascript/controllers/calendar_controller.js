@@ -1,11 +1,11 @@
 import { Controller } from "@hotwired/stimulus"
 
 import { Calendar } from '@fullcalendar/core';
+import interactionPlugin from '@fullcalendar/interaction';
+
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import listPlugin from '@fullcalendar/list';
-import { Turbo } from "@hotwired/turbo-rails";
-// import { Turbo } from "@hotwired/turbo-rails";
 
 // Connects to data-controller="calendar"
 export default class extends Controller {
@@ -13,9 +13,16 @@ export default class extends Controller {
   static targets = ["calendar"]
 
   connect() {
-    console.log(this.calendarTarget)
     let calendar = new Calendar(this.calendarTarget, {
+      plugins: [
+        dayGridPlugin,
+        timeGridPlugin,
+        listPlugin,
+        interactionPlugin
+      ],
+      editable: true,
       eventClick: this.eventClick,
+      eventDrop: this.eventDrop,
       events: '/events.json',
       headerToolbar: {
         center: 'title',
@@ -24,23 +31,37 @@ export default class extends Controller {
       },
       height: '80vh',
       initialView: 'dayGridMonth',
-      plugins: [dayGridPlugin, timeGridPlugin, listPlugin],
-      timeZone: 'UTC'
     });
 
+    window.calendar = calendar
+
     calendar.render()
+  }
 
-
+  eventDrop(info) {
+    //update the event with an api call
+    $.ajax({
+      url: '/events/' + info.event.id,
+      type: 'PUT',
+      headers: {
+        'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+      },
+      dataType: 'json',
+      contentType: 'application/json',
+      data: JSON.stringify({
+        event: {
+          start_time: info.event.start,
+          end_time: info.event.end
+        }
+      })
+    });
   }
 
   eventClick(info) {
-
     info.jsEvent.preventDefault(); // don't let the browser navigate
 
     if (info.event.url) {
-      $('#flyout')[0].src = `${info.event.url}/flyout`;
-      // Turbo.visit(`${info.event.url}/flyout`);
-      $('#flyout').flyout('show');
+      $('#flyout')[0].src = `${info.event.url}?flyout=true`;
     }
   }
 

@@ -1,12 +1,10 @@
-= form_with model: @event, class: "ui form" do |f|
+= form_with model: object, class: "ui form" do |f|
 
-  = hidden_field_tag :flyout, params[:flyout] || @editing
-
-  - if @event.errors.any?
+  - if object.errors.any?
     #error_explanation.ui.error.message.visible
-      %h2= "#{pluralize(@event.errors.count, "error")} prohibited this event from being saved:"
+      %h2= "#{pluralize(object.errors.count, "error")} prohibited this event from being saved:"
       %ul
-        - @event.errors.full_messages.each do |message|
+        - object.errors.full_messages.each do |message|
           %li= message
 
 
@@ -25,13 +23,6 @@
           = f.text_field :end_time, placeholder: "Start"
 
 
-
-  -# .field
-  -#   = f.label :start_time
-  -#   = f.datetime_field :start_time
-  -# .field
-  -#   = f.label :end_time
-  -#   = f.datetime_field :end_time
   .field
     = f.label :name
     = f.text_field :name

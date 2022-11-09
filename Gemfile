@@ -81,3 +81,4 @@ gem 'haml-rails'
 gem "devise"
 gem "devise_invitable"
 gem "acts_as_tenant"
+gem 'local_time'

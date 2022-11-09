@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   get "calendar", to: "calendar#index"
   resources :events do
     member do
-      get :flyout
     end
   end
   get "users/invite"
