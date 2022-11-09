@@ -15,7 +15,7 @@ class EventsController < BaseController
 
   # GET /events/new
   def new
-    @event = Event.new
+    @event = Event.new(event_params)
     if params[:flyout]
       render template: "shared/resource/flyout_new", locals: { resource: @event }
     end

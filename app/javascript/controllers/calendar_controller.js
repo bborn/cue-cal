@@ -24,6 +24,7 @@ export default class extends Controller {
       eventClick: this.eventClick,
       eventDrop: this.eventDrop,
       events: '/events.json',
+      dateClick: this.dateClick,
       headerToolbar: {
         center: 'title',
         left: 'prev,next today',
@@ -36,6 +37,17 @@ export default class extends Controller {
     window.calendar = calendar
 
     calendar.render()
+  }
+
+  dateClick(info) {
+    //open the event form in a flyout
+    let start_time = info.date
+    start_time.setHours(8)
+
+    let end_time = new Date(start_time)
+    end_time.setHours(9)
+
+    $('#flyout')[0].src = `/events/new?event[start_time]=${start_time}&event[end_time]=${end_time}&flyout=true`;
   }
 
   eventDrop(info) {
