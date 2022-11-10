@@ -23,14 +23,14 @@ export default class extends Controller {
       editable: true,
       eventClick: this.eventClick,
       eventDrop: this.eventDrop,
-      events: '/events.json',
+      events: 'events.json',
       dateClick: this.dateClick,
       headerToolbar: {
         center: 'title',
         left: 'prev,next today',
         right: 'dayGridMonth,timeGridWeek,listWeek'
       },
-      height: '80vh',
+      height: '70vh',
       initialView: 'dayGridMonth',
     });
 
@@ -47,13 +47,13 @@ export default class extends Controller {
     let end_time = new Date(start_time)
     end_time.setHours(9)
 
-    $('#flyout')[0].src = `/events/new?event[start_time]=${start_time}&event[end_time]=${end_time}&flyout=true`;
+    $('#flyout')[0].src = `events/new?event[start_time]=${start_time}&event[end_time]=${end_time}&flyout=true`;
   }
 
   eventDrop(info) {
     //update the event with an api call
     $.ajax({
-      url: '/events/' + info.event.id,
+      url: 'events/' + info.event.id,
       type: 'PUT',
       headers: {
         'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
@@ -73,7 +73,7 @@ export default class extends Controller {
     info.jsEvent.preventDefault(); // don't let the browser navigate
 
     if (info.event.url) {
-      $('#flyout')[0].src = `${info.event.url}?flyout=true`;
+      $('#flyout')[0].src = `${info.event.url}/edit?flyout=true`;
     }
   }
 

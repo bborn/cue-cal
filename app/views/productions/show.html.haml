@@ -1,5 +1,16 @@
+.ui.header
+  Productions
+
 .ui.segment
   = turbo_frame_tag @production do
     = render @production
 
 = render partial: "shared/resource/actions", object: @production, as: :resource
+
+
+.ui.segment
+
+  = turbo_frame_tag :groups, src: production_groups_path(@production) 
+  
+
+

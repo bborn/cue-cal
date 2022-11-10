@@ -1,4 +1,4 @@
-= form_with(model: group, class: 'ui form') do |form|
+= form_with(model: group, url: [parent, resource], class: 'ui form') do |form|
   - if group.errors.any?
     .ui.error.message.visible
       %h2
@@ -7,15 +7,19 @@
       %ul
         - group.errors.each do |error|
           %li= error.full_message
-  
+
+  -# .field
+  -#   = form.label :production
+  -#   = form.collection_select :production_ids, Production.all, :id, :name, {}, {multiple: true, class: 'ui fluid dropdown'}
+
   .field
-    = form.label :name, style: "display: block"
+    = form.label :name
     = form.text_field :name
   .field
-    = form.label :color, style: "display: block"
+    = form.label :color
     = form.text_field :color
 
   .actions
     = form.submit class: 'ui button primary'
     or
-    = link_to "back", @group, class: 'ui button tertiary'
+    = link_to "back", collection_path, class: 'ui button tertiary'

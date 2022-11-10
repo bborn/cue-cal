@@ -2,4 +2,9 @@ json.extract! event, :id, :start_time, :end_time, :name, :description, :producti
 json.start event.start_time
 json.end event.end_time
 json.title event.name
-json.url event_url(event)
+
+if event.groups.any?
+  json.color event.groups.first.color
+end
+
+json.url resource_url(event)

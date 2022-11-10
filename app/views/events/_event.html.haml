@@ -3,7 +3,9 @@
 
 = turbo_frame_tag event, class: wrapper do
   .ui.header 
-    Event
+    .sub.header
+      #{event.production.name}
+    #{event.name}
     .sub.header
       -if event.start_time
         = local_time event.start_time

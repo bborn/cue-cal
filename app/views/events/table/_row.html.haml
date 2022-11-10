@@ -1,5 +1,5 @@
 %tr
-  %td= link_to event.name, event
+  %td= link_to event.name, resource_path(event)
   %td
     = event.start_time
     - if event.end_time
@@ -11,4 +11,4 @@
   %td
     = simple_format event.description
   %td.collapsing.right.aligned
-    = link_to "Edit", edit_event_path(event), class: 'ui button'
+    = link_to "Edit", edit_resource_path(event), class: 'ui button'

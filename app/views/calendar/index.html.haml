@@ -1,7 +1,2 @@
 
-= link_to new_event_path(flyout: true), data: {turbo_frame: "flyout"}, class: 'ui button primary' do
-  %i.plus.icon
-  New Event
-
-#calendar.ui.segment{data: {controller: "calendar"}}
-  %div{data: {"calendar_target": 'calendar'}}
+=render partial: "calendar/calendar", locals: {productions: @productions}

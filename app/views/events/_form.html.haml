@@ -1,10 +1,10 @@
-= form_with model: object, class: "ui form" do |f|
+= form_with model: resource, url: [parent, resource], class: "ui form" do |f|
 
-  - if object.errors.any?
+  - if resource.errors.any?
     #error_explanation.ui.error.message.visible
-      %h2= "#{pluralize(object.errors.count, "error")} prohibited this event from being saved:"
+      %h2= "#{pluralize(resource.errors.count, "error")} prohibited this event from being saved:"
       %ul
-        - object.errors.full_messages.each do |message|
+        - resource.errors.full_messages.each do |message|
           %li= message
 
 
@@ -29,17 +29,23 @@
   .field
     = f.label :description
     = f.text_area :description
-  .field
-    = f.label :production
-    = f.collection_select :production_id, Production.all, :id, :name
+  
+  -if !resource.production
+    .field
+      = f.label :production
+      = f.collection_select :production_id, Production.all, :id, :name
 
   .field
     = f.label :groups
-    = f.collection_select :group_ids, Group.all, :id, :name, {}, { multiple: true, class: 'ui fluid search dropdown'}
+    = f.collection_select :group_ids, (resource.try(:production).try(:groups) || Group).all, :id, :name, {}, { multiple: true, class: 'ui fluid search dropdown'}
 
 
 
   .actions
     = f.submit 'Save', class: 'ui button primary'
+    -if resource.persisted?
+      = link_to 'Back', resource_path, class: 'ui button tertiary'    
+    -else
+      = link_to 'Back', collection_path, class: 'ui button tertiary'    
 
 

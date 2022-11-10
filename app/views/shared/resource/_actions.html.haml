@@ -1,7 +1,7 @@
 - hide ||= []
 
-= link_to "Edit", [:edit, resource], class: "ui button primary"
-= link_to "Destroy", resource, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "ui button negative"
+= link_to "Edit", edit_resource_path(resource), class: "ui button primary"
+= link_to "Destroy", resource_path(resource), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "ui button negative"
 
 - unless hide.include?(:back)
-  = link_to "Go back", resource.class, class: "ui button tertiary"
+  = link_to "Go back", collection_path, class: "ui button tertiary"

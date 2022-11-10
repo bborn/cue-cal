@@ -1,0 +1,5 @@
+
+= turbo_frame_tag :flyout do
+  .content{data: {controller: 'flyout'}}
+    =turbo_frame_tag resource do
+      =render "form", object: resource

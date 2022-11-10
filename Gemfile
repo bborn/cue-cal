@@ -78,7 +78,8 @@ end
 
 gem 'haml-rails'
 # gem 'sass-rails'
-gem "devise"
+gem "devise", git: "https://github.com/heartcombo/devise.git"
 gem "devise_invitable"
 gem "acts_as_tenant"
 gem 'local_time'
+gem 'inherited_resources'

@@ -1,0 +1,25 @@
+.ui.menu
+
+  .ui.dropdown.item
+    -if defined? resource
+      = resource.name
+    -else
+      All Productions
+    %i.dropdown.icon
+    .menu
+      = link_to "All Productions", calendar_path, class: "item"
+      - productions.each do |production|
+        = link_to production.name, calendar_production_path(production), class: "item"
+      
+      = link_to new_production_path, class: "item" do
+        %i.icon.plus.fitted
+        New Production
+
+
+  .right.menu
+    = link_to new_event_path(flyout: true), data: {turbo_frame: "flyout"}, class: 'item' do
+      %i.plus.icon
+      Add
+
+#calendar.ui.segment{data: {controller: "calendar"}}
+  %div{data: {"calendar_target": 'calendar'}}

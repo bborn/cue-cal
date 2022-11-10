@@ -1,6 +1,13 @@
 
 .ui.segment
-  = turbo_frame_tag @group do
-    = render @group
+  =turbo_frame_tag :groups do 
+    = turbo_frame_tag @group do
+      = render @group
 
-= render partial: "shared/resource/actions", object: @group, as: :resource
+    = link_to "Edit", edit_resource_path, class: "ui button primary"
+    = link_to "Destroy", resource_path, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "ui button negative"
+    = link_to "Go back", collection_path, class: "ui button tertiary"
+
+-# = render partial: "shared/resource/actions", object: @group, as: :resource
+
+

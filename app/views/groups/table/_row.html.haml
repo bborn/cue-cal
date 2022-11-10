@@ -1,6 +1,9 @@
 %tr
-  %td= link_to group.name, group
+  %td= link_to group.name, resource_path(group)
+  %td
+    -if group.production
+      = link_to group.production.name, group.production
   %td
     = pluralize group.users.count, 'user'
   %td.collapsing.right.aligned
-    = link_to "Edit", edit_group_path(group), class: 'ui button'
+    = link_to "Edit", edit_resource_path(group), class: 'ui button'
