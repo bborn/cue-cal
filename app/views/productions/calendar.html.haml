@@ -1,7 +1,12 @@
+= render partial: "productions/menu", object: @production, as: :production
+    
+
 = turbo_stream_from @production
 
+.margin-top-large 
 = turbo_frame_tag :first_calls, src: first_calls_production_path(@production) 
 
+.margin-top-large
 = render partial: "calendar/calendar", locals: {productions: @productions}
 
 -# = link_to new_production_event_path(@production, flyout: true), data: {turbo_frame: "flyout"}, class: 'ui button primary' do

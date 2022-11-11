@@ -1,6 +1,8 @@
+- date ||= Date.today
+
 =turbo_frame_tag :first_calls do
   .ui.header
-    First Calls
+    First Calls for #{local_relative_time date, 'weekday'}
 
   %table.ui.celled.table.striped
     %thead

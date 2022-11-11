@@ -7,3 +7,6 @@
     = pluralize group.users.count, 'user'
   %td.collapsing.right.aligned
     = link_to "Edit", edit_resource_path(group), class: 'ui button'
+    = link_to resource_path(group), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "ui icon button negative" do
+      %i.icon.trash
+

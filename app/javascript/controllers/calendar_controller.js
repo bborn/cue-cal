@@ -92,9 +92,10 @@ export default class extends Controller {
           <i class="icon ${info.resource.extendedProps.icon}"></i>
         `);
       },
-      height: '80vh',
+      height: '100vh',
       initialView: 'resourceTimeGridDay',
       slotDuration: '00:15:00',
+      slotMinTime: '00:10:00'
     });
 
     window.calendar = this.calendar

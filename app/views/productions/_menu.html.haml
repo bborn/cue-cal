@@ -1,0 +1,13 @@
+.ui.menu
+
+  .header.item
+    = link_to production.name, production
+    
+  .right.menu
+    = link_to production_groups_path(production), class: 'item' do
+      %i.icon.users
+      Groups
+    = link_to new_event_path(flyout: true), data: {turbo_frame: "flyout"}, class: 'item' do
+      %i.plus.icon.small.fitted
+      %i.icon.calendar.alternate
+

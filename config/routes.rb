@@ -25,5 +25,5 @@ Rails.application.routes.draw do
   match :onboarding, to: "onboarding#index", via: [:get, :post]
 
   # Defines the root path route ("/")
-  root "calendar#show"
+  root "productions#index"
 end

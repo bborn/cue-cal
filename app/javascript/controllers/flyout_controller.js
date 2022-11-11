@@ -8,7 +8,9 @@ export default class extends Controller {
 
   connect() {
     console.log("Connected to flyout controller");
-    $("#flyout").flyout().flyout('show');
+    $("#flyout").flyout({
+
+    }).flyout('show');
 
     this.rewriteLinks();
     this.rewriteForms();

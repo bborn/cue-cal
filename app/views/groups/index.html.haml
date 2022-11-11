@@ -1,7 +1,7 @@
 -# .ui.right.floated.header.margin-x-zero
 -#   = link_to "New Group", new_group_path, class: "ui button"  
 
-
+= render partial: "productions/menu", object: @production, as: :production
 
 =turbo_frame_tag :groups do
   .ui.left.floated.header

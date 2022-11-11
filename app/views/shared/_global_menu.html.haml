@@ -1,13 +1,26 @@
 .ui.fixed.inverted.menu
   .ui.container
 
-
-    %a.header.item(href=root_path)
-      %i.icon.theater.masks
-      Cue
-      - if current_tenant
-        \- 
-        #{current_tenant.name}
+    - unless current_user
+      %a.header.item(href=root_path)
+        %i.icon.theater.masks.margin-right-small
+        Cue
+        - if current_tenant
+          \- 
+          #{current_tenant.name}
+    -else    
+      .ui.simple.dropdown.item
+        %i.icon.theater.masks.margin-right-small
+        Cue
+        - if current_tenant
+          \- 
+          #{current_tenant.name}
+        .menu
+          - current_tenant.productions.each do |production|
+            = link_to production.name, calendar_production_path(production), class: "item"
+          =link_to new_production_path, class: "item" do
+            %i.icon.plus
+            Add Production
 
     
     - if current_user
@@ -23,9 +36,6 @@
         .ui.simple.dropdown.icon.item
           %i.icon.setting
           .menu
-            = link_to productions_path, class: "item" do
-              %i.icon.play
-              Productions
             = link_to organization_memberships_path, class: "item" do
               %i.icon.users
               Users

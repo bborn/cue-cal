@@ -1,4 +1,5 @@
-class LocationsController < InheritedResources::Base
+class LocationsController < BaseController
+  inherit_resources
   respond_to :html, :json
 
   private

@@ -12,6 +12,10 @@ class ProductionsController < BaseController
     @user_calls = @production.first_user_calls
   end
 
+  def show
+    redirect_to action: :calendar
+  end
+
   def permitted_params
     params.permit(production: [:name, :user_id])
   end
