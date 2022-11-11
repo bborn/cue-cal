@@ -1,0 +1,17 @@
+=turbo_frame_tag :first_calls do
+  .ui.header
+    First Calls
+
+  %table.ui.celled.table.striped
+    %thead
+      %tr
+        %th
+          Member
+        %th
+          First Call
+    - production.first_user_calls.each do |user, call|
+      %tr
+        %td= user.email
+        %td= local_relative_time call.start_time, 'time-or-date'
+
+

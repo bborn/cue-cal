@@ -1,0 +1,10 @@
+.ui.header
+  Locations
+
+.ui.segment
+  = turbo_frame_tag @location do
+    = render @location
+
+= render partial: "shared/resource/actions", object: @location, as: :resource
+
+  

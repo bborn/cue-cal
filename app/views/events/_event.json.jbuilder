@@ -1,10 +1,15 @@
-json.extract! event, :id, :start_time, :end_time, :name, :description, :production_id, :created_at, :updated_at
+json.extract! event, :id, :start_time, :end_time, :name, :production_id, :created_at, :updated_at
 json.start event.start_time
 json.end event.end_time
 json.title event.name
+json.resourceIds event.location_ids
 
-if event.groups.any?
-  json.color event.groups.first.color
+json.extendedProps do
+  json.groups event.groups
+  json.locations event.locations
 end
 
+json.description simple_format(event.description).html_safe
 json.url resource_url(event)
+
+# json.extract! event, :backgroundColor, :textColor, :borderColor

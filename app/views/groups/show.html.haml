@@ -1,7 +1,7 @@
 
-.ui.segment
-  =turbo_frame_tag :groups do 
-    = turbo_frame_tag @group do
+=turbo_frame_tag :groups do 
+  = turbo_frame_tag @group do
+    .ui.segment
       = render @group
 
     = link_to "Edit", edit_resource_path, class: "ui button primary"

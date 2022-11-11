@@ -6,13 +6,16 @@
     "@fullcalendar/daygrid": "^5.11.3",
     "@fullcalendar/interaction": "^5.11.3",
     "@fullcalendar/list": "^5.11.3",
+    "@fullcalendar/resource-timegrid": "^5.11.3",
+    "@fullcalendar/resource-timeline": "^5.11.3",
     "@fullcalendar/timegrid": "^5.11.3",
     "@hotwired/stimulus": "^3.1.1",
     "@hotwired/turbo-rails": "^7.2.4",
     "esbuild": "^0.15.13",
     "fomantic-ui": "^2.9.0",
     "local-time": "^2.1.0",
-    "sass": "^1.56.0"
+    "sass": "^1.56.0",
+    "stimulus-color-picker": "^1.0.0"
   },
   "scripts": {
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets",

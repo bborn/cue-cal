@@ -1,0 +1,45 @@
+= form_for @location, html: {class: "ui form"} do |f|
+  - if @location.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@location.errors.count, "error")} prohibited this location from being saved:"
+      %ul
+        - @location.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :name
+    = f.text_field :name
+
+  .field{data: {controller: 'color-picker'}}
+    = f.label :color
+    = f.hidden_field :color, "data-color-picker-target": "input"
+    .ui.button{"data-color-picker-target": "button"}
+      Color
+
+
+
+  .field
+    = f.label :icon
+    .ui.dropdown.icon.search.selection
+      = f.hidden_field :icon      
+      %i.dropdown.icon
+      .default.text Icon
+      .menu
+
+        .item{data: {value: ""}}
+          None
+        - t('icons').each do |icon|
+          .item{"data-value" => icon.humanize.downcase} 
+            %i.icon{class: icon.humanize.downcase}
+            = icon.humanize 
+        -# - t('emoji').each do |icon|
+        -#   .item{"data-value" => icon.humanize.downcase} 
+        -#     %em{data: {emoji: icon.downcase}}
+        -#     = icon.humanize 
+
+
+
+  .actions
+    = f.submit class: 'ui button primary'
+    or
+    = link_to "go back", @location, class: 'ui button tertiary'    

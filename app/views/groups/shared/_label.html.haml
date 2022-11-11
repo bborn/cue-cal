@@ -1,3 +1,6 @@
-.ui.label
-  .ui.mini.empty.circular.label{ style: "background-color: #{group.color};"}
+.ui.label{style: "color: #{group.color || 'inherit'}"}
+
+  -if group.icon
+    %i.icon.fitted{class: group.icon}
+
   = group.name

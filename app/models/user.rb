@@ -6,4 +6,8 @@ class User < ApplicationRecord
 
   has_many :organization_memberships
   has_many :organizations, through: :organization_memberships
+
+  def name
+    email.split("@").first
+  end
 end

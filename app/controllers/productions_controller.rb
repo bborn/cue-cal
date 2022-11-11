@@ -6,6 +6,12 @@ class ProductionsController < BaseController
     @calendar = resource
   end
 
+  def first_calls
+    @production = resource
+
+    @user_calls = @production.first_user_calls
+  end
+
   def permitted_params
     params.permit(production: [:name, :user_id])
   end

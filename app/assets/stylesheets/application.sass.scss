@@ -2,3 +2,17 @@
 @import 'utils/spacing.sass.scss';
 
 @import 'events.sass.scss';
+
+.fc-event-main {
+  overflow: hidden;
+  padding: 5px !important;  
+}
+
+.fc-timegrid-event .fc-event-time {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: #fff;
+  z-index: 9999999;
+  padding: 0 5px 0 5px;
+}

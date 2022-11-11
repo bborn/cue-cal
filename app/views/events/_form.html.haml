@@ -25,7 +25,7 @@
 
   .field
     = f.label :name
-    = f.text_field :name
+    = f.text_field :name, autofocus: true
   .field
     = f.label :description
     = f.text_area :description
@@ -38,6 +38,11 @@
   .field
     = f.label :groups
     = f.collection_select :group_ids, (resource.try(:production).try(:groups) || Group).all, :id, :name, {}, { multiple: true, class: 'ui fluid search dropdown'}
+
+
+  .field
+    = f.label :locations
+    = f.collection_select :location_ids, Location.all, :id, :name, {}, { multiple: true, class: 'ui fluid search dropdown'}
 
 
 

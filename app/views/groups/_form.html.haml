@@ -15,9 +15,26 @@
   .field
     = form.label :name
     = form.text_field :name
-  .field
-    = form.label :color
-    = form.text_field :color
+
+  .fields
+    .field.four.wide
+      = form.label :icon
+      .ui.dropdown.icon.search.selection
+        = form.hidden_field :icon      
+        %i.dropdown.icon
+        .default.text Icon
+        .menu
+          - t('icons').each do |icon|
+            .item{"data-value" => icon.humanize.downcase} 
+              %i.icon{class: icon.humanize.downcase}
+              = icon.humanize     
+
+    .field{data: {controller: 'color-picker'}}
+      = form.label :color
+      = form.hidden_field :color, "data-color-picker-target": "input"
+      .ui.button{"data-color-picker-target": "button"}
+        Color
+
 
   .actions
     = form.submit class: 'ui button primary'

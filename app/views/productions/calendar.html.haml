@@ -1,5 +1,8 @@
+= turbo_stream_from @production
 
-=render partial: "calendar/calendar", locals: {productions: @productions}
+= turbo_frame_tag :first_calls, src: first_calls_production_path(@production) 
+
+= render partial: "calendar/calendar", locals: {productions: @productions}
 
 -# = link_to new_production_event_path(@production, flyout: true), data: {turbo_frame: "flyout"}, class: 'ui button primary' do
 -#   %i.plus.icon

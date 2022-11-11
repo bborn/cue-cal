@@ -78,6 +78,6 @@ class GroupsController < BaseController
   # end
 
   def permitted_params
-    params.permit(group: [:name, :color, production_ids: []])
+    params.permit(group: [:name, :color, :icon, production_ids: []])
   end
 end

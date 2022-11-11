@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_10_021409) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_10_153140) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -21,6 +21,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_10_021409) do
     t.datetime "updated_at", null: false
     t.index ["event_id"], name: "index_event_groups_on_event_id"
     t.index ["group_id"], name: "index_event_groups_on_group_id"
+  end
+
+  create_table "event_locations", force: :cascade do |t|
+    t.bigint "event_id", null: false
+    t.bigint "location_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_event_locations_on_event_id"
+    t.index ["location_id"], name: "index_event_locations_on_location_id"
   end
 
   create_table "events", force: :cascade do |t|
@@ -51,6 +60,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_10_021409) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "production_id"
+    t.string "icon"
+  end
+
+  create_table "locations", force: :cascade do |t|
+    t.string "name"
+    t.integer "organization_id"
+    t.string "icon"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "color"
   end
 
   create_table "organization_memberships", force: :cascade do |t|
@@ -102,6 +121,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_10_021409) do
 
   add_foreign_key "event_groups", "events"
   add_foreign_key "event_groups", "groups"
+  add_foreign_key "event_locations", "events"
+  add_foreign_key "event_locations", "locations"
   add_foreign_key "events", "productions"
   add_foreign_key "group_memberships", "groups"
   add_foreign_key "group_memberships", "organization_memberships"

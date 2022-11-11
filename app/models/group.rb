@@ -19,5 +19,7 @@ class Group < ApplicationRecord
   #   self.production_ids = [id]
   # end
 
-  # Ex:- scope :active, -> {where(:active => true)}]
+  def first_call
+    self.events.today.first
+  end
 end

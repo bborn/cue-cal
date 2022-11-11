@@ -23,6 +23,10 @@
     - if event.groups.any?
       = render collection: event.groups, partial: 'groups/shared/label', as: :group
 
+    - if event.locations.any?
+      = render collection: event.locations, partial: 'locations/shared/label', as: :location
+
+
   .actions.right.margin-top-large   
     = render partial: "shared/resource/actions", object: event, as: :resource
 

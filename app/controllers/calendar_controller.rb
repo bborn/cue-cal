@@ -1,5 +1,5 @@
 class CalendarController < BaseController
-  def index
+  def show
     @productions = Production.all
   end
 end

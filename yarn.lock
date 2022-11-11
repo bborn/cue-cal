@@ -36,7 +36,7 @@
 
 "@fullcalendar/core@^5.11.3":
   version "5.11.3"
-  resolved "https://registry.npmjs.org/@fullcalendar/core/-/core-5.11.3.tgz"
+  resolved "https://registry.yarnpkg.com/@fullcalendar/core/-/core-5.11.3.tgz#26f276347eb83185e03e4086772910c85406b88e"
   integrity sha512-YUFxCvVJytUwFeXCx4J17kFMM7Ixwn9zBjVRw5NM2bMwgR6VAhSnlZc6yNQSOIy7Hj2TF0vDkO/4JNlTvxyAXw==
   dependencies:
     "@fullcalendar/common" "~5.11.3"
@@ -67,13 +67,84 @@
     "@fullcalendar/common" "~5.11.3"
     tslib "^2.1.0"
 
-"@fullcalendar/timegrid@^5.11.3":
+"@fullcalendar/premium-common@~5.11.3":
+  version "5.11.3"
+  resolved "https://registry.yarnpkg.com/@fullcalendar/premium-common/-/premium-common-5.11.3.tgz#f05099ddfbfc543bde1e7d18cb1b9269298af97a"
+  integrity sha512-fvMU8OmIReBXoY1iOkRO+zGwbUHA1YB9xtkYbSL3ZeMQ008P0Lj6ar7Jv/lB5XDRgh50TRfFIgfDjdszESAc4w==
+  dependencies:
+    "@fullcalendar/common" "~5.11.3"
+    tslib "^2.1.0"
+
+"@fullcalendar/resource-common@~5.11.3":
+  version "5.11.3"
+  resolved "https://registry.yarnpkg.com/@fullcalendar/resource-common/-/resource-common-5.11.3.tgz#e35d05ee16b482af5acf9039596a7e18426b9bad"
+  integrity sha512-KPsAITCuRI+dg6FoEPnJ+966xMRg5Le66b5cCJ3tDHoswSjUUeu5q46lMsKIblhJM8MCFDVw1pLzDyHZPOhX/w==
+  dependencies:
+    "@fullcalendar/common" "~5.11.3"
+    "@fullcalendar/premium-common" "~5.11.3"
+    tslib "^2.1.0"
+
+"@fullcalendar/resource-daygrid@~5.11.3":
+  version "5.11.3"
+  resolved "https://registry.yarnpkg.com/@fullcalendar/resource-daygrid/-/resource-daygrid-5.11.3.tgz#1c7a3244aedf65af960c8d46f7bf5126eab36d46"
+  integrity sha512-JkYdK/8S4KsRO8QbPBHmCkDiCJMjHza9Sv9LgE7O641I0hYhxc8grHQ4QtJ3DYGAa7Ts9lHTyvCA4guK3+jr7A==
+  dependencies:
+    "@fullcalendar/common" "~5.11.3"
+    "@fullcalendar/daygrid" "~5.11.3"
+    "@fullcalendar/premium-common" "~5.11.3"
+    "@fullcalendar/resource-common" "~5.11.3"
+    tslib "^2.1.0"
+
+"@fullcalendar/resource-timegrid@^5.11.3":
+  version "5.11.3"
+  resolved "https://registry.yarnpkg.com/@fullcalendar/resource-timegrid/-/resource-timegrid-5.11.3.tgz#2b5e32f073602988ad209638936a9e6d02a73bdd"
+  integrity sha512-OkKX68WnViIQpdShGuympBH+LwqhY2rMxiFlO66SCAM4sxHMQoyfRO7D+6SHHpqvWVhpSixYmAuWInoIMUOKfg==
+  dependencies:
+    "@fullcalendar/common" "~5.11.3"
+    "@fullcalendar/premium-common" "~5.11.3"
+    "@fullcalendar/resource-common" "~5.11.3"
+    "@fullcalendar/resource-daygrid" "~5.11.3"
+    "@fullcalendar/timegrid" "~5.11.3"
+    tslib "^2.1.0"
+
+"@fullcalendar/resource-timeline@^5.11.3":
+  version "5.11.3"
+  resolved "https://registry.yarnpkg.com/@fullcalendar/resource-timeline/-/resource-timeline-5.11.3.tgz#ddecfa899f61ea8f996d0ba052f451788f39596f"
+  integrity sha512-iYIXZPfqtiN/qizpGDCYlFVssdDTZv6lU/5N1v0FzvGMZfU2LkHLhCkouQeBQHja8ZCbJisy4sK3kUR9mXh2cg==
+  dependencies:
+    "@fullcalendar/common" "~5.11.3"
+    "@fullcalendar/premium-common" "~5.11.3"
+    "@fullcalendar/resource-common" "~5.11.3"
+    "@fullcalendar/scrollgrid" "~5.11.3"
+    "@fullcalendar/timeline" "~5.11.3"
+    tslib "^2.1.0"
+
+"@fullcalendar/scrollgrid@~5.11.3":
+  version "5.11.3"
+  resolved "https://registry.yarnpkg.com/@fullcalendar/scrollgrid/-/scrollgrid-5.11.3.tgz#23095a094dc82252a6cde3bb2126862245b672e6"
+  integrity sha512-JTWDmejPmit65pCoQafUPeplI2+iogXG/3TNbusXMSWYaaMrINHDQiBZ/6EAt46hO2eWyEglmgS0BwVXZNSlGg==
+  dependencies:
+    "@fullcalendar/common" "~5.11.3"
+    "@fullcalendar/premium-common" "~5.11.3"
+    tslib "^2.1.0"
+
+"@fullcalendar/timegrid@^5.11.3", "@fullcalendar/timegrid@~5.11.3":
   version "5.11.3"
   resolved "https://registry.npmjs.org/@fullcalendar/timegrid/-/timegrid-5.11.3.tgz"
   integrity sha512-SjIj2ZQ7nTyL1RxZkCPvNbuUQ0xHT+gfYJdUL3FT4bPjPJCxWtQ2CL8hxaeNmVozYYuy0yrGTW5Oup2+9IplbA==
   dependencies:
     "@fullcalendar/common" "~5.11.3"
     "@fullcalendar/daygrid" "~5.11.3"
+    tslib "^2.1.0"
+
+"@fullcalendar/timeline@~5.11.3":
+  version "5.11.3"
+  resolved "https://registry.yarnpkg.com/@fullcalendar/timeline/-/timeline-5.11.3.tgz#a5bfe8de88a953c22d6f7ee0bdbc13cf154ae14e"
+  integrity sha512-nbMJ2gG9mLGUZgGUB2O726u3D8EFxJkZsKA/O1053j5QiQ7C8Wca1rh8UX+bed/s+wmkWwKV5pB0CiOax4f3gQ==
+  dependencies:
+    "@fullcalendar/common" "~5.11.3"
+    "@fullcalendar/premium-common" "~5.11.3"
+    "@fullcalendar/scrollgrid" "~5.11.3"
     tslib "^2.1.0"
 
 "@hotwired/stimulus@^3.1.1":
@@ -276,6 +347,14 @@
   version "7.0.4"
   resolved "https://registry.npmjs.org/@rails/actioncable/-/actioncable-7.0.4.tgz"
   integrity sha512-tz4oM+Zn9CYsvtyicsa/AwzKZKL+ITHWkhiu7x+xF77clh2b4Rm+s6xnOgY/sGDWoFWZmtKsE95hxBPkgQQNnQ==
+
+"@simonwep/pickr@1.8.2":
+  version "1.8.2"
+  resolved "https://registry.yarnpkg.com/@simonwep/pickr/-/pickr-1.8.2.tgz#96dc86675940d7cad63d69c22083dd1cbb9797cb"
+  integrity sha512-/l5w8BIkrpP6n1xsetx9MWPWlU6OblN5YgZZphxan0Tq4BByTCETL6lyIeY8lagalS2Nbt4F2W034KHLIiunKA==
+  dependencies:
+    core-js "^3.15.1"
+    nanopop "^2.1.0"
 
 "@types/expect@^1.20.4":
   version "1.20.4"
@@ -1039,6 +1118,11 @@ copy-props@^2.0.1:
   dependencies:
     each-props "^1.3.2"
     is-plain-object "^5.0.0"
+
+core-js@^3.15.1:
+  version "3.26.0"
+  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.26.0.tgz#a516db0ed0811be10eac5d94f3b8463d03faccfe"
+  integrity sha512-+DkDrhoR4Y0PxDz6rurahuB+I45OsEUv8E1maPTB6OuHRohMMcznBq9TMpdpDMm/hUPob/mJJS3PqgbHpMTQgw==
 
 core-util-is@~1.0.0:
   version "1.0.3"
@@ -3258,6 +3342,11 @@ nanomatch@^1.2.9:
     snapdragon "^0.8.1"
     to-regex "^3.0.1"
 
+nanopop@^2.1.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/nanopop/-/nanopop-2.2.0.tgz#bd1c25588a7beaf68865bc2df19db4c58c77dcc9"
+  integrity sha512-E9JaHcxh3ere8/BEZHAcnuD10RluTSPyTToBvoFWS9/7DcCx6gyKjbn7M7Bx7E1veCxCuY1iO6h4+gdAf1j73Q==
+
 needle@^3.1.0:
   version "3.1.0"
   resolved "https://registry.npmjs.org/needle/-/needle-3.1.0.tgz"
@@ -4262,6 +4351,13 @@ static-extend@^0.1.1:
   dependencies:
     define-property "^0.2.5"
     object-copy "^0.1.0"
+
+stimulus-color-picker@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/stimulus-color-picker/-/stimulus-color-picker-1.0.0.tgz#b0d069199e325048c56cdbefbe262a57e651cad0"
+  integrity sha512-vUwgGlUSpQgaKTeUe0JAFmL7UU7hUH/WlPUDfYqZr0Pp+/frFvslzdQNsFyHnDzQ8D9tliJDbZHL3ZHsWL4BrQ==
+  dependencies:
+    "@simonwep/pickr" "1.8.2"
 
 stream-exhaust@^1.0.1:
   version "1.0.2"

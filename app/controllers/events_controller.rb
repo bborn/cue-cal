@@ -123,6 +123,6 @@ class EventsController < BaseController
 
   # Only allow a list of trusted parameters through.
   def permitted_params
-    params.permit(event: [:start_time, :end_time, :name, :description, :production_id, group_ids: []])
+    params.permit(event: [:start_time, :end_time, :name, :description, :production_id, location_ids: [], group_ids: []])
   end
 end

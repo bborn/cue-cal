@@ -1,0 +1,8 @@
+=turbo_frame_tag location do
+  %tr
+    %td.two.wide
+      = link_to location.name, location
+    %td.twelve.wide
+    %td.collapsing.right.aligned
+      = link_to edit_location_path(location), class: "ui icon button" do
+        Edit

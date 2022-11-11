@@ -15,3 +15,7 @@ application.register("flyout", FlyoutController)
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
+
+import ColorPicker from 'stimulus-color-picker'
+application.register('color-picker', ColorPicker)
+import '@simonwep/pickr/dist/themes/classic.min.css'

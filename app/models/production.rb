@@ -7,4 +7,18 @@ class Production < ApplicationRecord
   has_many :events, dependent: :destroy
 
   validates :name, presence: true
+
+  def first_user_calls
+    user_calls = {}
+
+    groups.each { |group|
+      if first_call = group.first_call
+        group.users.each { |user|
+          user_calls[user] = first_call
+        }
+      end
+    }
+
+    user_calls = user_calls.sort_by { |user, call| user.name }
+  end
 end

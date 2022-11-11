@@ -25,6 +25,9 @@ export default class extends Controller {
     if (typeof (window.calendar) != 'undefined') {
       window.calendar.refetchEvents()
     }
+    $("turbo-frame[id*=first_calls]").each(function () {
+      this.reload();
+    });
   }
 
   rewriteForms() {
