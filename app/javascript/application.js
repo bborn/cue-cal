@@ -5,6 +5,7 @@ import LocalTime from "local-time"
 
 
 import "./controllers"
+import "./channels"
 
 $(document).on('turbo:load', function () {
   init();

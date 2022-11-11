@@ -8,9 +8,7 @@ export default class extends Controller {
 
   connect() {
     console.log("Connected to flyout controller");
-    $("#flyout").flyout({
-      onHidden: this.refreshCalendar.bind(this)
-    }).flyout('show');
+    $("#flyout").flyout().flyout('show');
 
     this.rewriteLinks();
     this.rewriteForms();
@@ -18,16 +16,6 @@ export default class extends Controller {
 
   disconnect() {
     $("#flyout").flyout('hide')
-  }
-
-  refreshCalendar() {
-    console.log("Flyout hidden: refresh calendar");
-    if (typeof (window.calendar) != 'undefined') {
-      window.calendar.refetchEvents()
-    }
-    $("turbo-frame[id*=first_calls]").each(function () {
-      this.reload();
-    });
   }
 
   rewriteForms() {

@@ -1,4 +1,5 @@
 import { Controller } from "@hotwired/stimulus"
+import consumer from "../channels/consumer";
 
 import { Calendar } from '@fullcalendar/core';
 import interactionPlugin from '@fullcalendar/interaction';
@@ -17,7 +18,33 @@ export default class extends Controller {
   static targets = ["calendar"]
 
   connect() {
-    let calendar = new Calendar(this.calendarTarget, {
+    this.initCalendar()
+    this.initSubscription()
+
+  }
+
+  initSubscription() {
+
+    let $this = this;
+    this.subscription = consumer.subscriptions.create('CalendarChannel', {
+      connected() {
+        console.log('connected to calendar channel');
+      },
+
+      disconnected() { },
+
+      received(data) {
+        console.log("received", data);
+        $this.calendar.refetchEvents()
+      }
+
+    });
+  }
+
+
+
+  initCalendar() {
+    this.calendar = new Calendar(this.calendarTarget, {
       allDaySlot: false,
       schedulerLicenseKey: 'CC-Attribution-NonCommercial-NoDerivatives',
       plugins: [
@@ -70,10 +97,12 @@ export default class extends Controller {
       slotDuration: '00:15:00',
     });
 
-    window.calendar = calendar
+    window.calendar = this.calendar
 
-    calendar.render()
+    this.calendar.render()
   }
+
+
 
   newEvent(start_time, end_time, resource) {
     let src = `events/new?event[start_time]=${start_time}&event[end_time]=${end_time}&flyout=true`;

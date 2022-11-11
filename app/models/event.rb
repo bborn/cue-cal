@@ -15,6 +15,9 @@ class Event < ApplicationRecord
 
   after_save_commit {
     production.broadcast_replace_to production, target: :first_calls, partial: "productions/first_calls", locals: { production: production }
+    # production.broadcast_replace_to production,
+
+    ActionCable.server.broadcast("calendar_channel", { event: self })
   }
 
   def icons

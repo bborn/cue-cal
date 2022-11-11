@@ -11,6 +11,7 @@
     "@fullcalendar/timegrid": "^5.11.3",
     "@hotwired/stimulus": "^3.1.1",
     "@hotwired/turbo-rails": "^7.2.4",
+    "@rails/actioncable": "^7.0.4",
     "esbuild": "^0.15.13",
     "fomantic-ui": "^2.9.0",
     "local-time": "^2.1.0",
