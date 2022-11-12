@@ -1,0 +1,7 @@
+= form_for @organization, url: onboarding_path, html: {class: 'ui form'} do |f|
+  .field
+    = f.label 'Your Organization Name'
+    = f.text_field :name
+
+  .actions  
+    = f.submit "Save", class: 'ui button primary'

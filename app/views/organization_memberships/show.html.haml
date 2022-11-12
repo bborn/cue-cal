@@ -1,6 +1,10 @@
 .ui.segment
   %p
-    %b User:
+    %b Name:
+    = @organization_membership.user.name
+
+  %p
+    %b Email:
     = @organization_membership.user.email
   %p
     %b Groups:

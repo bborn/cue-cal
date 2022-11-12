@@ -1,0 +1,23 @@
+= form_for [@production, @group, @group_membership], html: {class: 'ui form', data: {turbo: false}} do |f|
+  - if @group_membership.errors.any?
+    fhjsadklfhasjk
+    .ui.error.message.visible
+      %h2= "#{pluralize(@group_membership.errors.count, "error")} prohibited this member from being saved:"
+      %ul
+        - @group_membership.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :name
+    = f.text_field :user_name
+
+
+  .field
+    = f.label "Email"
+    = f.text_field :user_email
+
+  .actions
+    = f.submit 'Save', class: 'ui button primary'
+
+
+

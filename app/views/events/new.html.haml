@@ -1,8 +1,10 @@
 - if params[:flyout]
-  =render template: "shared/resource/flyout_new", locals: { resource: @event }
+  = turbo_frame_tag :flyout do
+    .content{data: {controller: 'flyout'}}
+      = turbo_frame_tag resource do
+        = render "form", object: resource  
 
 - else
   %h1 New event
-
   = render 'form', event: @event
 

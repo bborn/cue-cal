@@ -1,0 +1,8 @@
+
+- unless @event.destroyed?
+  .ui.segment
+    = turbo_frame_tag :flyout do
+      .content{data: {controller: 'flyout'}}
+        = turbo_frame_tag @event do
+          = render @event
+      

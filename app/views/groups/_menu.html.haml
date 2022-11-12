@@ -1,0 +1,9 @@
+-if @production
+  = render partial: "productions/menu", object: @production, as: :production
+
+
+.ui.header.left.floated
+  Groups
+
+.ui.right.floated.header
+  = link_to "New Group", new_resource_path, class: "ui button"  

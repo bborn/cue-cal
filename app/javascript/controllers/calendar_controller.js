@@ -54,6 +54,14 @@ export default class extends Controller {
         interactionPlugin,
         resourceTimeGridPlugin
       ],
+      customButtons: {
+        myCustomButton: {
+          text: 'custom!',
+          click: function () {
+            alert('clicked the custom button!');
+          }
+        }
+      },
       editable: true,
       selectable: true,
       select: this.selectCallback.bind(this),
@@ -90,12 +98,12 @@ export default class extends Controller {
       resourceLabelDidMount(info) {
         $(info.el).find('.fc-col-header-cell-cushion').prepend(`
           <i class="icon ${info.resource.extendedProps.icon}"></i>
-        `);
+        `).css('color', info.resource.extendedProps.color);
       },
       height: '100vh',
       initialView: 'resourceTimeGridDay',
       slotDuration: '00:15:00',
-      slotMinTime: '00:10:00'
+      // slotMinTime: '00:10:00'
     });
 
     window.calendar = this.calendar
@@ -127,8 +135,13 @@ export default class extends Controller {
 
     let end_time = new Date(start_time)
     end_time.setHours(9)
+    let frame_src = `events/new?flyout=true&event[start_time]=${start_time}&event[end_time]=${end_time}`
 
-    $('#flyout')[0].src = `events/new?event[start_time]=${start_time}&event[end_time]=${end_time}&flyout=true`;
+    if (info.resource) {
+      frame_src += `&event[location_ids][]=${info.resource.id}`
+    }
+
+    $('#flyout')[0].src = frame_src;
   }
 
   eventDrop(info) {
@@ -162,7 +175,7 @@ export default class extends Controller {
     info.jsEvent.preventDefault(); // don't let the browser navigate
 
     if (info.event.url) {
-      $('#flyout')[0].src = `${info.event.url}/edit?flyout=true`;
+      $('#flyout')[0].src = `${info.event.url}/flyout`;
     }
   }
 

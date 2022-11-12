@@ -1,8 +1,6 @@
-- if params[:flyout]
-  = render template: "shared/resource/flyout_edit", locals: { resource: @event }
--else
-  %h1 Editing event
 
-  = turbo_frame_tag @event do
-    = render 'form', object: @event, as: :event
+%h1 Editing event
+
+= turbo_frame_tag @event do
+  = render 'form', object: @event, as: :event
 

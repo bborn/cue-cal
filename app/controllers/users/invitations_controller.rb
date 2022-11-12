@@ -2,6 +2,7 @@ class Users::InvitationsController < Devise::InvitationsController
   before_action :authenticate_user!
   set_current_tenant_through_filter
   before_action :set_current_organization
+  before_action :configure_permitted_parameters
 
   private
 
@@ -20,5 +21,10 @@ class Users::InvitationsController < Devise::InvitationsController
         user
       }
     end
+  end
+
+  # Permit the new params here.
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:invite, keys: [:email, :name])
   end
 end

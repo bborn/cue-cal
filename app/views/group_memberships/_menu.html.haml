@@ -1,0 +1,11 @@
+-if @production
+  = render partial: "productions/menu", object: @production, as: :production
+
+.ui.header  
+  .ui.breadcrumb.large
+    .section
+      =link_to @group.name, [@production, @group]
+    .divider
+      \/
+    .section
+      Add a member

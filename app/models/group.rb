@@ -10,14 +10,6 @@ class Group < ApplicationRecord
   has_many :events, through: :event_groups
 
   belongs_to :production
-  # def production_id
-  #   production.try(:id)
-  # end
-
-  # def production_id=(id)
-  #   raise id
-  #   self.production_ids = [id]
-  # end
 
   def first_call
     self.events.today.first

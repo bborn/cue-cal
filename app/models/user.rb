@@ -7,7 +7,9 @@ class User < ApplicationRecord
   has_many :organization_memberships
   has_many :organizations, through: :organization_memberships
 
+  validates :email, presence: true
+
   def name
-    email.split("@").first
+    read_attribute(:name) || email.split("@").first
   end
 end

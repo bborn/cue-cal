@@ -1,9 +1,9 @@
+= render partial: 'groups/menu'    
 
-=turbo_frame_tag :groups do 
-  = turbo_frame_tag @group do
-    .ui.segment
-      = render @group
+.ui.segment.clearboth
+  = render @group
 
+  .actions.margin-top-small
     = link_to "Edit", edit_resource_path, class: "ui button primary"
     = link_to "Destroy", resource_path, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "ui button negative"
     = link_to "Go back", collection_path, class: "ui button tertiary"
@@ -11,3 +11,13 @@
 -# = render partial: "shared/resource/actions", object: @group, as: :resource
 
 
+.clearboth
+.ui.right.floated.header
+  = link_to "Add a member", new_production_group_group_membership_path(@production, @group), class: "ui button"  
+
+%table.ui.table
+  %thead
+    = render partial: "organization_memberships/table/header"
+
+  %tbody
+    = render collection: @group.memberships, partial: "organization_memberships/table/row", as: :organization_membership    

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :locations
-  devise_for :users, controllers: { invitations: "users/invitations" }
+  devise_for :users, controllers: { users: "users", invitations: "users/invitations" }
 
   resource :calendar, controller: "calendar" do
   end
@@ -12,12 +12,19 @@ Rails.application.routes.draw do
       get :calendar
       get :first_calls, to: "first_calls"
     end
-    resources :groups
-    resources :events
+    resources :groups do
+      resources :group_memberships
+    end
+    resources :events do
+      member do
+        get :flyout
+      end
+    end
     resources :locations
   end
 
   resources :groups
+
   resources :events
 
   resources :organization_memberships, path: "users"

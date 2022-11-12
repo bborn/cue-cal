@@ -8,16 +8,15 @@ export default class extends Controller {
 
   connect() {
     console.log("Connected to flyout controller");
-    $("#flyout").flyout({
+    $("#flyout").flyout('destroy')
+    $("#flyout").flyout('show')
 
-    }).flyout('show');
-
-    this.rewriteLinks();
-    this.rewriteForms();
+    // this.rewriteLinks();
+    // this.rewriteForms();
   }
 
   disconnect() {
-    $("#flyout").flyout('hide')
+    // $("#flyout").flyout('hide')
   }
 
   rewriteForms() {

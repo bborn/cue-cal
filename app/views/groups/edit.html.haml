@@ -1,6 +1,9 @@
-%h1 Editing group
 
-.ui.segment
+
+= render partial: 'groups/menu'    
+
+
+.ui.segment.clearboth
   =turbo_frame_tag :groups do 
     =turbo_frame_tag @group, :edit do
       = render "form", group: @group

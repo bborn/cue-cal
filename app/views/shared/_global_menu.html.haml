@@ -15,21 +15,15 @@
         - if current_tenant
           \- 
           #{current_tenant.name}
-        .menu
-          - current_tenant.productions.each do |production|
-            = link_to production.name, calendar_production_path(production), class: "item"
-          =link_to new_production_path, class: "item" do
-            %i.icon.plus
-            Add Production
+        - if current_tenant          
+          .menu
+            - current_tenant.productions.each do |production|
+              = link_to production.name, calendar_production_path(production), class: "item"
+            =link_to new_production_path, class: "item" do
+              %i.icon.plus
+              Add Production
 
     
-    - if current_user
-      -# = link_to "Productions", productions_path, class: 'item'
-      -# = link_to "Groups", groups_path, class: 'item'
-      -# = link_to "Users", organization_memberships_path, class: 'item'
-      -# = link_to "Events", events_path, class: 'item'      
-      -# = link_to "Calendar", calendar_path, class: 'item'            
-
     
     .right.menu      
       - if current_user    
