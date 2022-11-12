@@ -82,5 +82,4 @@ test:
 production:
   <<: *default
   database: cue_production
-  username: cue
-  password: <%= ENV["CUE_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>

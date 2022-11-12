@@ -1,24 +1,23 @@
-# README
+Postgres cluster cue-db created
+Username: postgres
+Password: 6bca1b91c39fc85abca07b8e8d0dc42feeed1c0983491185
+Hostname: cue-db.internal
+Proxy Port: 5432
+PG Port: 5433
+Save your credentials in a secure place -- you won't be able to see them again!
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Monitoring Deployment
 
-Things you may want to cover:
+1 desired, 1 placed, 1 healthy, 0 unhealthy [health checks: 3 total, 3 passing]
+--> v0 deployed successfully
 
-* Ruby version
+Connect to postgres
+Any app within the personal organization can connect to postgres using the above credentials and the hostname "cue-db.internal."
+For example: postgres://postgres:6bca1b91c39fc85abca07b8e8d0dc42feeed1c0983491185@cue-db.internal:5432
 
-* System dependencies
+Now that you've set up postgres, here's what you need to understand: https://fly.io/docs/reference/postgres-whats-next/
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Postgres cluster cue-db is now attached to cue
+The following secret was added to cue:
+DATABASE_URL=postgres://cue:cUCsCvGRd56ogxH@top2.nearest.of.cue-db.internal:5432/cue
+Postgres cluster cue-db is now attached to cue
