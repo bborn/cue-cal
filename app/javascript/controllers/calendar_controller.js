@@ -126,9 +126,11 @@ export default class extends Controller {
   }
 
   copyPrevDays() {
-    let date = this.calendar.getDate()
-    let url = `copy_from_date?date=${date}`
-    Turbo.visit(url)
+    if (confirm("Copy events from previous day?")) {
+      let date = this.calendar.getDate()
+      let url = `copy_from_date?date=${date}`
+      Turbo.visit(url)
+    }
   }
 
 
