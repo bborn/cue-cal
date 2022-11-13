@@ -9,6 +9,15 @@ class EventsController < BaseController
     @event = resource
   end
 
+  def new
+    #initialize the event with today's start and end times
+    @event = build_resource
+    @event.locations << current_tenant.locations.first
+    @event.start_time ||= Time.zone.now.beginning_of_hour + 1.hour
+    @event.end_time ||= @event.start_time + 1.hour
+    new!
+  end
+
   def create
     create! do |success, failure|
       success.html { |html|
@@ -17,7 +26,9 @@ class EventsController < BaseController
           redirect_to event_path(@event), notice: "Event was successfully created."
         }
       }
-      failure.html { render :new, status: :unprocessable_entity }
+      failure.html {
+        render :new, status: :unprocessable_entity
+      }
     end
   end
 

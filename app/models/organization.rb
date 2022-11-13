@@ -4,4 +4,5 @@ class Organization < ApplicationRecord
 
   has_many :productions
   has_many :groups
+  has_many :locations
 end

@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     member do
       get :calendar
       get :first_calls, to: "first_calls"
+      get :copy_from_date
     end
     resources :groups do
       resources :group_memberships

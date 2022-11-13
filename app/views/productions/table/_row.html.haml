@@ -1,8 +1,10 @@
-=turbo_frame_tag production do
-  %tr
-    %td.two.wide
-      = link_to production.name, production
-    %td.twelve.wide
-    %td.collapsing.right.aligned
-      = link_to edit_production_path(production), class: "ui icon button" do
-        Edit
+
+%tr
+  %td.two.wide
+    = link_to production.name, production
+  %td.twelve.wide
+  %td.collapsing.right.aligned
+    = link_to edit_production_path(production), class: "ui icon button" do
+      Edit
+    = link_to production_path(production), class: "ui icon red button", data: { turbo_confirm: "Are you sure?", turbo_method: :delete} do
+      %i.icon.trash

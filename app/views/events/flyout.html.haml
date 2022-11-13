@@ -5,4 +5,8 @@
       .content{data: {controller: 'flyout'}}
         = turbo_frame_tag @event do
           = render @event
-      
+- else
+  = turbo_frame_tag @event do
+    .ui.segment
+      .content
+        Deleted

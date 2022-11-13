@@ -1,4 +1,4 @@
-#calendar{data: {controller: "calendar"}}
+#calendar{data: {controller: "calendar", 'calendar-initial-date-value': (params[:date] || Date.current).to_s }}
   %div{data: {"calendar_target": 'calendar'}}
 
 

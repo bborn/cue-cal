@@ -8,6 +8,7 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import listPlugin from '@fullcalendar/list';
 import resourceTimeGridPlugin from '@fullcalendar/resource-timegrid';
+import { Turbo } from "@hotwired/turbo-rails";
 
 
 
@@ -16,6 +17,12 @@ import resourceTimeGridPlugin from '@fullcalendar/resource-timegrid';
 export default class extends Controller {
 
   static targets = ["calendar"]
+  static values = {
+    initialDate: {
+      type: String,
+      default: new Date().toISOString()
+    }
+  }
 
   connect() {
     this.initCalendar()
@@ -44,6 +51,7 @@ export default class extends Controller {
 
 
   initCalendar() {
+    const $this = this;
     this.calendar = new Calendar(this.calendarTarget, {
       allDaySlot: false,
       schedulerLicenseKey: 'CC-Attribution-NonCommercial-NoDerivatives',
@@ -55,11 +63,15 @@ export default class extends Controller {
         resourceTimeGridPlugin
       ],
       customButtons: {
-        myCustomButton: {
-          text: 'custom!',
-          click: function () {
-            alert('clicked the custom button!');
-          }
+        newEvent: {
+          icon: 'plus',
+          hint: "Add event",
+          click: this.newEvent.bind(this),
+        },
+        copyPrevDays: {
+          icon: 'copy',
+          hint: "Copy from previous day",
+          click: this.copyPrevDays.bind(this),
         }
       },
       editable: true,
@@ -92,8 +104,9 @@ export default class extends Controller {
       headerToolbar: {
         center: 'title',
         left: 'prev,next today',
-        right: 'dayGridMonth,timeGridWeek,resourceTimeGridDay'
+        right: 'newEvent copyPrevDays dayGridMonth,timeGridWeek,resourceTimeGridDay'
       },
+
       resources: 'locations.json',
       resourceLabelDidMount(info) {
         $(info.el).find('.fc-col-header-cell-cushion').prepend(`
@@ -102,6 +115,7 @@ export default class extends Controller {
       },
       height: '100vh',
       initialView: 'resourceTimeGridDay',
+      initialDate: $this.initialDateValue,
       slotDuration: '00:15:00',
       // slotMinTime: '00:10:00'
     });
@@ -111,6 +125,11 @@ export default class extends Controller {
     this.calendar.render()
   }
 
+  copyPrevDays() {
+    let date = this.calendar.getDate()
+    let url = `copy_from_date?date=${date}`
+    Turbo.visit(url)
+  }
 
 
   newEvent(start_time, end_time, resource) {
@@ -129,6 +148,7 @@ export default class extends Controller {
   }
 
   dateClick(info) {
+    console.log('date click', info);
     //open the event form in a flyout
     let start_time = info.date
     start_time.setHours(8)

@@ -1,4 +1,5 @@
 // Entry point for your Sass build
+
 @import 'utils/spacing.sass.scss';
 
 @import 'events.sass.scss';
@@ -20,4 +21,35 @@
 
 .clearboth {
   clear: both;
+}
+
+.field_with_errors { 
+  display: inline;
+}
+
+.fc-icon {
+  &.fc-icon-plus,
+  &.fc-icon-copy {
+    font-size: 1em !important;
+    line-height: 1  !important;
+    vertical-align: baseline !important;
+    font-style: normal;    
+    display: inline-block;
+    opacity: 1;
+    margin: 0 .25rem 0 0;
+    width: 1.18em;
+    height: 1em;
+    font-family: icons !important;
+    font-style: normal;
+    font-weight: 400;
+    text-decoration: inherit;
+    text-align: center;
+  }
+  &.fc-icon-plus::before {
+    content: "\f271";
+  }  
+  &.fc-icon-copy::before {
+    content: "\f0c5";
+  }
+
 }

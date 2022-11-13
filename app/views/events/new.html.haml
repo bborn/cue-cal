@@ -6,5 +6,6 @@
 
 - else
   %h1 New event
-  = render 'form', event: @event
+  = turbo_frame_tag :new_event do  
+    = render 'form', event: @event
 

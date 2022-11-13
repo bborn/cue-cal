@@ -4,13 +4,10 @@
 .ui.left.floated.header
   Productions
 
+%table.ui.table.striped
+  %thead
+    = render partial: "productions/table/header", object: Production
 
-
-=turbo_frame_tag :productions do
-  %table.ui.table.striped
-    %thead
-      = render partial: "productions/table/header", object: Production
-
-    %tbody
-      = render collection: @productions, partial: "productions/table/row", as: :production
+  %tbody
+    = render collection: @productions, partial: "productions/table/row", as: :production
 

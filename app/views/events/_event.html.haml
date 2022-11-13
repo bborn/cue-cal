@@ -9,20 +9,17 @@
     - if event.end_time
       to
       = local_time event.end_time
+
+  .sub.header.margin-top-small
+    - if event.groups.any?
+      = render collection: event.groups, partial: 'groups/shared/label', as: :group
+
+    - if event.locations.any?
+      = render collection: event.locations, partial: 'locations/shared/label', as: :location      
+
 .content
-  %p
-    %strong Name:
-    = event.name
-  %p
-    %strong Description:
-    = event.description
-
-  - if event.groups.any?
-    = render collection: event.groups, partial: 'groups/shared/label', as: :group
-
-  - if event.locations.any?
-    = render collection: event.locations, partial: 'locations/shared/label', as: :location
-
+  -if event.description
+    = simple_format event.description
 
 .actions.right.margin-top-large   
   = render partial: "shared/resource/actions", object: event, as: :resource

@@ -1,6 +1,9 @@
-.ui.label{style: "color: #{group.color || 'inherit'}"}
+= turbo_frame_tag group do
+  .ui.label{id: dom_id(group), style: "color: #{group.color || 'inherit'}", 'data-controller': 'popup-edit'}
+    -if group.icon
+      %i.icon.fitted{class: group.icon}
 
-  -if group.icon
-    %i.icon.fitted{class: group.icon}
+    = group.name
 
-  = group.name
+  .ui.popup
+    = render 'groups/form', group: group

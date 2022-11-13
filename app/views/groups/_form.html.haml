@@ -1,4 +1,4 @@
-= form_with(model: group, url: [parent, resource], class: 'ui form') do |form|
+= form_with(model: group, url: [group.production, group], class: 'ui form') do |form|
   - if group.errors.any?
     .ui.error.message.visible
       %h2
@@ -13,30 +13,25 @@
   -#   = form.collection_select :production_ids, Production.all, :id, :name, {}, {multiple: true, class: 'ui fluid dropdown'}
 
   .field
-    = form.label :name
-    = form.text_field :name
+    = form.text_field :name, placeholder: "Name"
 
   .fields
-    .field.four.wide
-      = form.label :icon
-      .ui.dropdown.icon.search.selection
+    .field.twelve.wide
+      .ui.icon.dropdown.search.button.two.column.fluid
         = form.hidden_field :icon      
-        %i.dropdown.icon
-        .default.text Icon
-        .menu
+        .default.text
+          %i.icon.circle.outline.fitted
+        .menu.very.wide
           - t('icons').each do |icon|
             .item{"data-value" => icon.humanize.downcase} 
-              %i.icon{class: icon.humanize.downcase}
-              = icon.humanize     
+              %i.icon{class: icon.humanize.downcase}  
+              = icon.humanize.downcase
 
-    .field{data: {controller: 'color-picker'}}
-      = form.label :color
-      = form.hidden_field :color, "data-color-picker-target": "input"
-      .ui.button{"data-color-picker-target": "button"}
-        Color
+    .field.four.wide
+      %span{data: {controller: 'color-picker', 'color-picker-theme-value': 'nano'}}
+        = form.hidden_field :color, "data-color-picker-target": "input"
+        .ui.button{"data-color-picker-target": "button"}
 
 
   .actions
     = form.submit class: 'ui button primary'
-    or
-    = link_to "back", collection_path, class: 'ui button tertiary'

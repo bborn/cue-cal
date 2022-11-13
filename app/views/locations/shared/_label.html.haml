@@ -1,4 +1,15 @@
-.ui.label{style: "color: #{location.color || 'inherit'}"}
-  -if location.icon
-    %i.icon.fitted{class: location.icon}
-  = location.name
+-# .ui.label{style: "color: #{location.color || 'inherit'}"}
+-#   -if location.icon
+-#     %i.icon.fitted{class: location.icon}
+-#   = location.name
+
+
+= turbo_frame_tag location do
+  .ui.label{id: dom_id(location), style: "color: #{location.color || 'inherit'}", 'data-controller': 'popup-edit'}
+    -if location.icon
+      %i.icon.fitted{class: location.icon}
+
+    = location.name
+
+  .ui.popup
+    = render 'locations/form', location: location

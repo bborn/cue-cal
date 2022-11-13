@@ -7,18 +7,21 @@ import LocalTime from "local-time"
 import "./controllers"
 import "./channels"
 
-$(document).on('turbo:load', function () {
+$(document).on('turbo:load', function (e) {
+  console.log("turbo:load", e);
+
   init();
 
 });
 
 $(document).on('turbo:frame-load', function (e) {
+  console.log("turbo:frame-load", e);
   let frame = e.target
   init(frame);
 });
 
 const init = function (context) {
-
+  console.log("init context", context);
   LocalTime.start();
 
   function select_with_context(selector) {
@@ -45,5 +48,13 @@ const init = function (context) {
   });
 
   $$(".dropdown").dropdown();
+
+  $$(".dropdown.additions").dropdown({
+    allowAdditions: true,
+    hideAdditions: false,
+    className: {
+      addition: 'stuck addition'
+    }
+  });
 
 }
