@@ -1,8 +1,9 @@
 %tr
   %td= link_to group.name, resource_path(group)
-  %td
-    -if group.production
-      = link_to group.production.name, group.production
+  -unless @production
+    %td
+      -if group.production
+        = link_to group.production.name, group.production
   %td
     = pluralize group.users.count, 'user'
   %td.collapsing.right.aligned

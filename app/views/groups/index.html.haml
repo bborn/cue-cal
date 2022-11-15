@@ -1,8 +1,14 @@
 = render partial: 'groups/menu'    
 
-=turbo_frame_tag :groups do
-  
-  %table.ui.table.striped
+
+- if @groups.empty?
+  .ui.segment.placeholder.clearboth
+    %h2.header.inline= t('groups.index.no_groups')
+    %p.inline 
+      = link_to new_resource_path, class: 'ui button primary' do
+        = t('groups.index.create_group')
+- else  
+  %table.ui.table.striped.clearboth
     %thead
       = render partial: "groups/table/header", object: Group
 

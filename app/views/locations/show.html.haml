@@ -1,10 +1,11 @@
-.ui.header
-  Locations
+= render partial: "locations/menu", location: @location
 
-.ui.segment
-  = turbo_frame_tag @location do
-    = render @location
+.ui.segment.clearboth
+  = render @location
 
-= render partial: "shared/resource/actions", object: @location, as: :resource
+  = render partial: "shared/resource/actions", object: @location, as: :resource
 
-  
+.ui.segment{style: "display: none;"}
+  = turbo_frame_tag @location, :label do
+
+    = render 'locations/shared/label', location: @location

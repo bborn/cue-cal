@@ -21,6 +21,7 @@
         = form.hidden_field :icon      
         .default.text
           %i.icon.circle.outline.fitted
+          Choose an icon
         .menu.very.wide
           - t('icons').each do |icon|
             .item{"data-value" => icon.humanize.downcase} 

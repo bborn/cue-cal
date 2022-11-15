@@ -1,12 +1,19 @@
-.ui.right.floated.header.margin-x-zero
-  = link_to "New location", new_location_path, class: "ui button"  
+-# .ui.right.floated.header.margin-x-zero
+-#   = link_to "New location", new_location_path, class: "ui button"  
 
-.ui.left.floated.header
-  Locations
+-# .ui.left.floated.header
+-#   Locations
+
+= render partial: "menu"
 
 
-
-=turbo_frame_tag :locations do
+- if @locations.empty?
+  .ui.segment.placeholder.clearboth
+    %h2.header.inline= t('locations.index.no_locations')
+    %p.inline 
+      = link_to new_resource_path, class: 'ui button primary' do
+        = t('locations.index.create_location')
+- else
   %table.ui.table.striped
     %thead
       = render partial: "locations/table/header", object: Location

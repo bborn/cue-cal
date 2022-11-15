@@ -1,0 +1,25 @@
+.ui.left.floated.header
+  .ui.large.breadcrumb
+    .section
+      = link_to_unless_current "Users", collection_path
+    -if @organization_membership
+      .divider
+        \/
+      .section
+        = link_to_unless_current resource.name, resource_path
+    
+      -if current_page?(new_resource_path)
+        .divider
+          \/
+        .section
+          New
+      -elsif current_page?(edit_resource_path)
+        .divider
+          \/
+        .section
+          Edit
+
+
+.ui.right.floated.header
+  = link_to "Invite a user", new_user_invitation_path, class: "ui button margin-right-zero"  
+

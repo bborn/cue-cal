@@ -4,6 +4,8 @@ json.end event.end_time
 json.title event.name
 json.resourceIds event.location_ids
 
+json.resourceId 0 if event.location_ids.empty?
+
 json.extendedProps do
   json.groups event.groups
   json.locations event.locations

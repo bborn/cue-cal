@@ -1,13 +1,17 @@
-.ui.right.floated.header.margin-x-zero
-  = link_to "Invite a user", new_user_invitation_path, class: "ui button"  
-
-.ui.left.floated.header
-  Users
+= render "menu"
 
 
-%table.ui.table
-  %thead
-    = render partial: "organization_memberships/table/header"
+- if  @organization_memberships.empty?
+  .ui.segment.placeholder.clearboth
+    %h2.header.inline= t('organization_memberships.index.no_users')
+    %p.inline 
+      = link_to new_resource_path, class: 'ui button primary' do
+        = t('organization_memberships.index.create_user')
+-else
 
-  %tbody
-    = render collection: @organization_memberships, partial: "organization_memberships/table/row", as: :organization_membership    
+  %table.ui.table
+    %thead
+      = render partial: "organization_memberships/table/header"
+
+    %tbody
+      = render collection: @organization_memberships, partial: "organization_memberships/table/row", as: :organization_membership    

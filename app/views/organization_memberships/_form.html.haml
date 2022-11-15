@@ -6,6 +6,9 @@
         - @organization_membership.errors.full_messages.each do |message|
           %li= message
 
+
+
+
   .field
     = f.label "Groups"
     = f.collection_select :group_ids, Group.all, :id, :name, {}, { multiple: true, class: 'ui selection search dropdown' }

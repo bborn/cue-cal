@@ -1,4 +1,6 @@
-.ui.segment
+= render "menu"
+
+.ui.segment.clearboth 
   %p
     %b Name:
     = @organization_membership.user.name
@@ -10,5 +12,5 @@
     %b Groups:
     = @organization_membership.groups.map(&:name).join(', ')
 
-= link_to 'Edit', edit_organization_membership_path(@organization_membership), class: 'ui button'
-= link_to 'Back', organization_memberships_path, class: 'ui button'
+= link_to 'Edit', edit_organization_membership_path(@organization_membership), class: 'ui button primary'
+= link_to 'Delete', organization_memberships_path, class: 'ui button red', data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to remove this member?"}

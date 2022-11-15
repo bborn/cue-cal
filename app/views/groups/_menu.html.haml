@@ -1,9 +1,38 @@
--if @production
-  = render partial: "productions/menu", object: @production, as: :production
+
+.ui.header.left.floated.clearing
+  .ui.large.breadcrumb.left.floated
+    -if @production
+      .section
+        = link_to_unless_current @production.name, production_path(@production)
+      .divider
+        \/
+    .section
+      =link_to "Groups", collection_path
+
+    - if @group && @group.persisted?
+      -if current_page?(resource_path)
+        .divider
+          \/
+        .section
+          = resource.name
+      -elsif current_page?(edit_resource_path)
+        .divider
+          \/
+        .section
+          =link_to resource.name, resource_path
+        .divider
+          \/
+        .section
+          Edit
+    
+    -if current_page?(new_resource_path)
+      .divider
+        \/
+      .section
+        New
 
 
-.ui.header.left.floated
-  Groups
 
-.ui.right.floated.header
-  = link_to "New Group", new_resource_path, class: "ui button"  
+- if current_page?(collection_path)
+  .ui.right.floated.header
+    = link_to "New Group", new_resource_path, class: "ui button"  

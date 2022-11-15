@@ -6,3 +6,5 @@
     %td.collapsing.right.aligned
       = link_to edit_location_path(location), class: "ui icon button" do
         Edit
+      = link_to location_path(location), class: "ui icon button red", data: { turbo_method: :delete, turbo_confirm: 'Are you sure?'} do
+        %i.icon.trash        

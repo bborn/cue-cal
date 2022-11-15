@@ -1,0 +1,32 @@
+.ui.header.left.floated.clearing
+  .ui.large.breadcrumb.left.floated
+    .section
+      =link_to_unless_current "Locations", collection_path
+
+    -if @location      
+      -if current_page?(@location)
+        .divider
+          \/
+        .section
+          = resource.name
+    
+      -if current_page?(new_resource_path)
+        .divider
+          \/
+        .section
+          New
+      -elsif current_page?(edit_resource_path)
+        .divider
+          \/
+        .section
+          =link_to resource.name, resource_path
+        .divider
+          \/
+        .section
+          Edit
+
+
+
+- if current_page?(collection_path)
+  .ui.right.floated.header.margin-right-zero
+    = link_to "New Location", new_resource_path, class: "ui button"  

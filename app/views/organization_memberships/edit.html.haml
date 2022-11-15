@@ -1,6 +1,5 @@
-%h1 Edit user: #{@organization_membership.user.email}
+= render 'menu'
 
-.ui.segment
+.ui.segment.clearboth
   = render 'form'
 
-= link_to 'Back', organization_memberships_path, class: 'ui button'
