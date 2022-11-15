@@ -12,7 +12,10 @@ class EventsController < BaseController
   def new
     #initialize the event with today's start and end times
     @event = build_resource
-    @event.locations << current_tenant.locations.first if @event.locations.empty?
+
+    if @event.locations.empty? && current_tenant.locations.first
+      @event.locations << current_tenant.locations.first
+    end
     @event.start_time ||= Time.zone.now.beginning_of_hour + 1.hour
     @event.end_time ||= @event.start_time + 1.hour
     new!

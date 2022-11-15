@@ -12,12 +12,40 @@
     = f.text_field :user_name
 
 
-  .field
+  .field.ui.search
     = f.label "Email"
-    = f.text_field :user_email
+    = f.text_field :user_email, class: 'prompt', placeholder: 'Search for a user'
 
   .actions
     = f.submit 'Save', class: 'ui button primary'
 
 
+:javascript
+  $(document).ready(function() {
+    $('.ui.search').search({
+      showNoResults: false,
+      onSelect(result, response) {
+        $('.ui.form').form('set values', {group_membership_user_email: result.title, group_membership_user_name: result.description});
+      },
+      apiSettings: {
+        url: '/users.json?q={query}',
+        onResponse(response) {
+          var results = []
 
+          response.forEach( (membership) => {
+            user = membership.user
+            results.push({
+              id: user.id,
+              title: user.email,
+              description: user.name
+            })
+          });
+
+          console.log(results)
+          return {results: results};
+        }
+      },
+      minCharacters : 3
+    });
+  });
+  

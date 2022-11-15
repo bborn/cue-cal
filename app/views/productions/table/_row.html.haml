@@ -6,5 +6,5 @@
   %td.collapsing.right.aligned
     = link_to edit_production_path(production), class: "ui icon button" do
       Edit
-    = link_to production_path(production), class: "ui icon red button", data: { turbo_confirm: "Are you sure?", turbo_method: :delete} do
+    = link_to production_path(production), class: "ui icon negative button", data: { turbo_confirm: "Are you sure?", turbo_method: :delete} do
       %i.icon.trash

@@ -1,8 +1,8 @@
 class GroupMembershipsController < BaseController
   inherit_resources
-  actions :create, :new
+  actions :create, :new, :destroy
 
-  nested_belongs_to :production, :group, optional: true
+  nested_belongs_to :production, :group
 
   def create
     @group = parent

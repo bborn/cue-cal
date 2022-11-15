@@ -83,3 +83,5 @@ gem "devise_invitable"
 gem "acts_as_tenant"
 gem 'local_time'
 gem 'inherited_resources'
+gem "ransack", "~> 3.2"
+gem "kaminari"

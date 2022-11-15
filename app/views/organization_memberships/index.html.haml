@@ -15,3 +15,5 @@
 
     %tbody
       = render collection: @organization_memberships, partial: "organization_memberships/table/row", as: :organization_membership    
+
+  =paginate @organization_memberships

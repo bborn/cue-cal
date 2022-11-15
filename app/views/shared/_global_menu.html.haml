@@ -1,27 +1,28 @@
 .ui.fixed.inverted.menu
   .ui.container
 
-    - unless current_user
-      %a.header.item(href=root_path)
-        %i.icon.theater.masks.margin-right-small
-        Cue
-        - if current_tenant
-          \- 
-          #{current_tenant.name}
-    -else    
+
+    %a.header.item(href=root_path)
+      %i.icon.theater.masks.margin-right-small
+      Cue
+      - if current_tenant
+        \- 
+        #{current_tenant.name}
+
+    -if current_tenant.productions.count < 5
+      - current_tenant.productions.each do |production|
+        = link_to production.name, calendar_production_path(production), class: "item"      
+    -else
       .ui.simple.dropdown.item
-        %i.icon.theater.masks.margin-right-small
-        Cue
-        - if current_tenant
-          \- 
-          #{current_tenant.name}
-        - if current_tenant          
-          .menu
-            - current_tenant.productions.each do |production|
-              = link_to production.name, calendar_production_path(production), class: "item"
-            =link_to new_production_path, class: "item" do
-              %i.icon.plus
-              Add Production
+        Productions
+        %i.icon.dropdown
+
+        .menu
+          - current_tenant.productions.each do |production|
+            = link_to production.name, calendar_production_path(production), class: "item"
+          =link_to new_production_path, class: "item" do
+            %i.icon.plus
+            Add Production
 
     
     

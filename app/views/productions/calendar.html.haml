@@ -2,15 +2,28 @@
     
 = turbo_stream_from @production
 
-.margin-top-large 
-= turbo_frame_tag :first_calls, src: first_calls_production_path(@production) 
+-if current_tenant.locations.empty? 
+  .ui.placeholder.segment
+    %h2.header.inline
+      Get Started
 
-.margin-top-large
-= render partial: "calendar/calendar", locals: {productions: @productions}
+    %p.inline
+      = link_to "Add a space", new_location_path, class: "ui button primary"
 
--# = link_to new_production_event_path(@production, flyout: true), data: {turbo_frame: "flyout"}, class: 'ui button primary' do
--#   %i.plus.icon
--#   New Event
+    %p.inline
+      %span.ui.grey.text
+        For example: "Main stage", or "Rehearsal Room #2"
 
--# #calendar.ui.segment{data: {controller: "calendar"}}
--#   %div{data: {"calendar_target": 'calendar'}}
+-else
+  .margin-top-large 
+  = turbo_frame_tag :first_calls, src: first_calls_production_path(@production) 
+
+  .margin-top-large
+  = render partial: "calendar/calendar", locals: {productions: @productions}
+
+  -# = link_to new_production_event_path(@production, flyout: true), data: {turbo_frame: "flyout"}, class: 'ui button primary' do
+  -#   %i.plus.icon
+  -#   New Event
+
+  -# #calendar.ui.segment{data: {controller: "calendar"}}
+  -#   %div{data: {"calendar_target": 'calendar'}}

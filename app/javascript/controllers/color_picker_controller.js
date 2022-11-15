@@ -8,6 +8,7 @@ export default class extends ColorPicker {
   initialize() {
     super.initialize()
     this.onChange = this.onChange.bind(this)
+    this.onClear = this.onClear.bind(this)
   }
 
 
@@ -22,6 +23,7 @@ export default class extends ColorPicker {
     })
 
     this.picker.on('change', this.onChange)
+    this.picker.on('clear', this.onClear)
   }
 
   get componentOptions() {
@@ -46,6 +48,10 @@ export default class extends ColorPicker {
       this.picker.setColor(this.inputTarget.value);
     }
     this.picker.hide()
+  }
+
+  onClear() {
+    this.inputTarget.value = null
   }
 
   // // Callback when the color is saved

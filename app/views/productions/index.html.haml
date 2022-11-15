@@ -4,10 +4,18 @@
 .ui.left.floated.header
   Productions
 
-%table.ui.table.striped
-  %thead
-    = render partial: "productions/table/header", object: Production
+-if @productions.empty?
+  .ui.placeholder.segment.clearboth
+    %h2.header.inline
+      Get started
+    =link_to "Add a production", new_production_path, class: "ui button primary"
 
-  %tbody
-    = render collection: @productions, partial: "productions/table/row", as: :production
+
+-else
+  %table.ui.table.striped.clearboth
+    %thead
+      = render partial: "productions/table/header", object: Production
+
+    %tbody
+      = render collection: @productions, partial: "productions/table/row", as: :production
 

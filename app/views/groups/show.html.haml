@@ -5,26 +5,33 @@
 
   .actions.margin-top-small
     = link_to "Edit", edit_resource_path, class: "ui button primary"
-    = link_to "Destroy", resource_path, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "ui button negative"
-
--# = render partial: "shared/resource/actions", object: @group, as: :resource
-
-
-.clearboth
-
-.ui.left.floated.header
-  Members
+    = link_to resource_path, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "ui button icon negative" do
+      %i.trash.icon
 
 .ui.right.floated.header.margin-right-zero
   = link_to "Add a member", new_production_group_group_membership_path(@production, @group), class: "ui button"  
+.ui.header.left.floated
+  Members
+
+.clearboth
 
 -if @group.group_memberships.any?
   %table.ui.table
     %thead
-      = render partial: "organization_memberships/table/header"
+      %th Name
+      %th.collapsing
 
     %tbody
-      = render collection: @group.memberships, partial: "organization_memberships/table/row", as: :organization_membership    
+      - @group.group_memberships.each do |group_membership|
+        %tr
+          %td
+            = group_membership.user_name
+          %td
+            = link_to production_group_group_membership_path(@production, @group, group_membership), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "ui icon button negative" do
+              %i.trash.icon
 -else
-  .ui.segment
-    No members yet.
+  .ui.segment.placeholder
+    %h2.ui.header.inline
+      No members yet.
+    = link_to new_production_group_group_membership_path(@production, @group), class: 'ui button primary' do
+      Add a member

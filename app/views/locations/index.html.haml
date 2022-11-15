@@ -14,7 +14,7 @@
       = link_to new_resource_path, class: 'ui button primary' do
         = t('locations.index.create_location')
 - else
-  %table.ui.table.striped
+  %table.ui.table.striped.clearboth
     %thead
       = render partial: "locations/table/header", object: Location
 
