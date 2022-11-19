@@ -1,5 +1,13 @@
 .ui.header.left.floated.clearing
   .ui.large.breadcrumb.left.floated
+    -if @production
+      .section
+        =link_to_unless_current @production.name, @production
+      .divider
+        \/
+
+
+
     .section
       =link_to_unless_current "Locations", collection_path
 

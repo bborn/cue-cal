@@ -34,7 +34,13 @@ class ProductionsController < BaseController
     redirect_to calendar_production_path(@production, date: @date.to_date + 1.day)
   end
 
+  protected
+
+  def begin_of_association_chain
+    current_user
+  end
+
   def permitted_params
-    params.permit(production: [:name, :user_id])
+    params.permit(production: [:name])
   end
 end

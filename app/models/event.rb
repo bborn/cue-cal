@@ -1,4 +1,5 @@
 class Event < ApplicationRecord
+  has_rich_text :description
   acts_as_tenant :organization
 
   belongs_to :production
@@ -8,6 +9,10 @@ class Event < ApplicationRecord
 
   has_many :event_locations, dependent: :destroy
   has_many :locations, through: :event_locations
+
+  has_many :event_memberships, dependent: :destroy
+  has_many :organization_memberships, through: :event_memberships
+  has_many :users, through: :organization_memberships
 
   validates :start_time, :end_time, :name, :production, presence: true
 

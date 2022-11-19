@@ -14,12 +14,16 @@
     - if event.groups.any?
       = render collection: event.groups, partial: 'groups/shared/label', as: :group
 
+    - if event.organization_memberships.any?
+      = render collection: event.organization_memberships, partial: 'organization_memberships/shared/label', as: :organization_membership
+
+
     - if event.locations.any?
       = render collection: event.locations, partial: 'locations/shared/label', as: :location      
 
 .content
   -if event.description
-    = simple_format event.description
+    = event.description
 
 .actions.right.margin-top-large   
   = render partial: "shared/resource/actions", object: event, as: :resource

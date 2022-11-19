@@ -11,7 +11,7 @@ json.extendedProps do
   json.locations event.locations
 end
 
-json.description simple_format(event.description).html_safe
+json.description event.description.body
 json.url resource_url(event)
 
 # json.extract! event, :backgroundColor, :textColor, :borderColor

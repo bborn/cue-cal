@@ -5,5 +5,8 @@ class OrganizationMembership < ApplicationRecord
   has_many :group_memberships, dependent: :destroy
   has_many :groups, through: :group_memberships
 
-  delegate :name, to: :user
+  has_many :event_memberships, dependent: :destroy
+  has_many :events, through: :event_memberships
+
+  delegate :name, :avatar, to: :user
 end

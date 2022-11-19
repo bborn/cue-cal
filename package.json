@@ -12,11 +12,13 @@
     "@hotwired/stimulus": "^3.1.1",
     "@hotwired/turbo-rails": "^7.2.4",
     "@rails/actioncable": "^7.0.4",
+    "@rails/actiontext": "^7.0.4",
     "esbuild": "^0.15.13",
     "fomantic-ui": "^2.9.0",
     "local-time": "^2.1.0",
     "sass": "^1.56.0",
-    "stimulus-color-picker": "^1.0.0"
+    "stimulus-color-picker": "^1.0.0",
+    "trix": "^2.0.0"
   },
   "scripts": {
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets",

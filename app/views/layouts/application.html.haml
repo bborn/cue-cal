@@ -16,7 +16,7 @@
   %body
     = render partial: "shared/global_menu"      
     
-    = turbo_frame_tag :flyout, class: 'ui flyout wide right'
+    = turbo_frame_tag :flyout, class: 'ui flyout very wide right', style: "overflow: auto;"
 
     .pusher
       .ui.container.padding-top-large

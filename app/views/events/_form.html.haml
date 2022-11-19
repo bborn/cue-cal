@@ -28,7 +28,7 @@
     = f.text_field :name, autofocus: true
   .field
     = f.label :description
-    = f.text_area :description
+    = f.rich_text_area :description
   
   -if !resource.production
     .field
@@ -38,6 +38,11 @@
   .field
     = f.label :groups
     = f.collection_select :group_ids, (resource.try(:production).try(:groups) || Group).all, :id, :name, {}, { multiple: true, class: 'ui fluid search additions dropdown'}
+
+
+  .field
+    = f.label :members
+    = f.collection_select :organization_membership_ids, current_tenant.organization_memberships.all, :id, :name, {}, { multiple: true, class: 'ui fluid search dropdown'}
 
 
   .field

@@ -3,15 +3,18 @@ import "@hotwired/turbo-rails"
 import "fomantic-ui"
 import LocalTime from "local-time"
 
-
 import "./controllers"
 import "./channels"
 
+import "trix"
+import "@rails/actiontext"
+
+
+// jQuery Initialization Stuff
+
 $(document).on('turbo:load', function (e) {
   console.log("turbo:load", e);
-
   init();
-
 });
 
 $(document).on('turbo:frame-load', function (e) {

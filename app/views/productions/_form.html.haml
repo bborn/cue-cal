@@ -12,9 +12,9 @@
     = form.label :name, style: "display: block"
     = form.text_field :name
   
-  .field
-    = form.label :user_id, style: "display: block"
-    = form.collection_select :user_id, current_tenant.users.all, :id, :email
+  -# .field
+  -#   = form.label :user_id, style: "display: block"
+  -#   = form.collection_select :user_id, current_tenant.users.all, :id, :email
   
   .actions
     = form.submit class: 'ui button primary'

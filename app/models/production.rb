@@ -5,8 +5,9 @@ class Production < ApplicationRecord
 
   has_many :groups, dependent: :destroy
   has_many :events, dependent: :destroy
+  has_many :locations, through: :organization
 
-  validates :name, presence: true
+  validates :name, :user, presence: true
 
   def first_user_calls
     user_calls = {}

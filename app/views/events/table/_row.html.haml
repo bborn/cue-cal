@@ -9,6 +9,6 @@
     = render collection: event.groups, partial: 'groups/shared/label', as: :group
 
   %td
-    = simple_format event.description
+    = event.description
   %td.collapsing.right.aligned
     = link_to "Edit", edit_resource_path(event), class: 'ui button'

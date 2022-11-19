@@ -7,9 +7,15 @@ class User < ApplicationRecord
   has_many :organization_memberships
   has_many :organizations, through: :organization_memberships
 
+  has_many :productions
+
   validates :email, presence: true
 
   def name
     read_attribute(:name).blank? ? email.split("@").first : read_attribute(:name)
+  end
+
+  def avatar
+    Initials.svg(name, shape: :rect)
   end
 end

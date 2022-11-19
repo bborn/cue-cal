@@ -1,3 +1,15 @@
+### To Do:
+
+- [x] After creating first location, redirect to production page
+- [x] Allow adding users directly to an event~~
+- [x] Rich text event description field
+
+Marketing landing page
+
+## Maybe:
+
+Recurring events?
+
 Postgres cluster cue-db created
 Username: postgres
 Password: 6bca1b91c39fc85abca07b8e8d0dc42feeed1c0983491185
