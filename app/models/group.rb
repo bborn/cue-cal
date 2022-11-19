@@ -13,6 +13,10 @@ class Group < ApplicationRecord
 
   validates :name, presence: true
 
+  after_save_commit {
+    ActionCable.server.broadcast("calendar_channel", { event: self })
+  }
+
   def first_call
     self.events.today.first
   end

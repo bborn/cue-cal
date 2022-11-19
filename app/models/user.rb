@@ -9,7 +9,16 @@ class User < ApplicationRecord
 
   has_many :productions
 
-  validates :email, presence: true
+  validates :email, presence: true, if: :email_required?
+  validates :name, presence: true, if: :name_required?
+
+  after_create_commit {
+    ActionCable.server.broadcast("calendar_channel", { event: self })
+  }
+
+  after_destroy_commit {
+    ActionCable.server.broadcast("calendar_channel", { event: self })
+  }
 
   def name
     read_attribute(:name).blank? ? email.split("@").first : read_attribute(:name)
@@ -17,5 +26,13 @@ class User < ApplicationRecord
 
   def avatar
     Initials.svg(name, shape: :rect)
+  end
+
+  def email_required?
+    name.blank?
+  end
+
+  def name_required?
+    email.blank?
   end
 end

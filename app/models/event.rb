@@ -27,9 +27,10 @@ class Event < ApplicationRecord
     between(date.beginning_of_day, date.end_of_day)
   end
 
-  attr_accessor :group_names
+  attr_accessor :group_names, :user_names
 
   before_save :create_groups_from_group_names
+  before_save :create_users_from_user_names
 
   after_save_commit {
     production.broadcast_replace_to production, target: :first_calls, partial: "productions/first_calls", locals: { production: production }
@@ -64,6 +65,25 @@ class Event < ApplicationRecord
       group_names.each do |name|
         group = production.groups.where(name: name).first_or_create
         groups << group
+      end
+    end
+  end
+
+  def organization_membership_ids=(array)
+    ids, user_names = array.partition { |id|
+      id.to_i != 0
+    }
+
+    self.user_names = user_names.reject(&:blank?)
+
+    super(ids.compact)
+  end
+
+  def create_users_from_user_names
+    if user_names.present?
+      user_names.each do |name|
+        organization_membership = OrganizationMembership.find_or_create_by_name(organization, name)
+        organization_memberships << organization_membership
       end
     end
   end

@@ -116,8 +116,8 @@ export default class extends Controller {
       height: '100vh',
       initialView: 'resourceTimeGridDay',
       initialDate: $this.initialDateValue,
-      slotDuration: '00:15:00',
-      // slotMinTime: '00:10:00'
+      slotDuration: '00:05:00',
+      eventMinHeight: 50
     });
 
     window.calendar = this.calendar

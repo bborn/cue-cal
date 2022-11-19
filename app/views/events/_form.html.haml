@@ -42,7 +42,7 @@
 
   .field
     = f.label :members
-    = f.collection_select :organization_membership_ids, current_tenant.organization_memberships.all, :id, :name, {}, { multiple: true, class: 'ui fluid search dropdown'}
+    = f.collection_select :organization_membership_ids, current_tenant.organization_memberships.all, :id, :name, {}, { multiple: true, class: 'ui fluid search additions dropdown'}
 
 
   .field

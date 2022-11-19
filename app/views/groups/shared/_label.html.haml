@@ -1,5 +1,5 @@
 = turbo_frame_tag group do
-  .ui.label{id: dom_id(group), style: "color: #{group.color || 'inherit'}", 'data-controller': 'popup-edit'}
+  .ui.label{style: "color: #{group.color || 'inherit'}", 'data-controller': 'popup-edit'}
     -if group.icon
       %i.icon.fitted{class: group.icon}
 
