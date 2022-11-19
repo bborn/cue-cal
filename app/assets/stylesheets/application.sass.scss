@@ -1,8 +1,13 @@
+/*
+ *= require_self
+ *= require actiontext
+*/
+
 // Entry point for your Sass build
 
 @import 'utils/spacing.sass.scss';
 @import 'events.sass.scss';
-@import 'actiontext.sass.scss';
+@import 'actiontext.scss';
 
 .fc-event-main {
   overflow: hidden;

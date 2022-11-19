@@ -9,20 +9,21 @@
         \- 
         #{current_tenant.name}
 
-    -if current_tenant.productions.count < 5
-      - current_tenant.productions.each do |production|
-        = link_to production.name, calendar_production_path(production), class: "item"      
-    -else
-      .ui.simple.dropdown.item
-        Productions
-        %i.icon.dropdown
+    -if current_tenant
+      -if current_tenant.productions.count < 5
+        - current_tenant.productions.each do |production|
+          = link_to production.name, calendar_production_path(production), class: "item"      
+      -else
+        .ui.simple.dropdown.item
+          Productions
+          %i.icon.dropdown
 
-        .menu
-          - current_tenant.productions.each do |production|
-            = link_to production.name, calendar_production_path(production), class: "item"
-          =link_to new_production_path, class: "item" do
-            %i.icon.plus
-            Add Production
+          .menu
+            - current_tenant.productions.each do |production|
+              = link_to production.name, calendar_production_path(production), class: "item"
+            =link_to new_production_path, class: "item" do
+              %i.icon.plus
+              Add Production
 
     
     

@@ -77,7 +77,7 @@ end
 
 
 gem 'haml-rails'
-# gem 'sass-rails'
+gem 'sassc-rails'
 gem "devise", git: "https://github.com/heartcombo/devise.git"
 gem "devise_invitable"
 gem "acts_as_tenant"
