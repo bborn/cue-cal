@@ -58,3 +58,13 @@
   }
 
 }
+
+
+
+.ui.selection.list {
+  .item {
+    &[aria-selected] {
+      background-color: #f9fafb;
+    }
+  }
+}

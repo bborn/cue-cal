@@ -13,6 +13,7 @@
     "@hotwired/turbo-rails": "^7.2.4",
     "@rails/actioncable": "^7.0.4",
     "@rails/actiontext": "^7.0.4",
+    "@thoughtbot/trix-mentions-element": "^0.1.2",
     "esbuild": "^0.15.13",
     "fomantic-ui": "^2.9.0",
     "local-time": "^2.1.0",

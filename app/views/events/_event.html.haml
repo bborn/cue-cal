@@ -3,25 +3,29 @@
   .sub.header
     #{event.production.name}
   #{event.name}
+  - if event.locations.any?
+    .sub.header
+      %strong= event.locations.map(&:name).to_sentence
+
   .sub.header
     -if event.start_time
-      = local_time event.start_time
+      = local_relative_time event.start_time
     - if event.end_time
       to
-      = local_time event.end_time
+      = local_relative_time event.end_time
+    
+      -# = render collection: event.locations, partial: 'locations/shared/label', as: :location
 
-  .sub.header.margin-top-small
-    - if event.groups.any?
-      = render collection: event.groups, partial: 'groups/shared/label', as: :group
-
-    - if event.organization_memberships.any?
-      = render collection: event.organization_memberships, partial: 'organization_memberships/shared/label', as: :organization_membership
-
-
-    - if event.locations.any?
-      = render collection: event.locations, partial: 'locations/shared/label', as: :location      
 
 .content
+  - if event.groups.any?
+    = render collection: event.groups, partial: 'groups/shared/label', as: :group
+
+  - if event.organization_memberships.any?
+    = render collection: event.organization_memberships, partial: 'organization_memberships/shared/label', as: :organization_membership
+
+
+.content.margin-top-small
   -if event.description
     = event.description
 

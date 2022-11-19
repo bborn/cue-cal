@@ -94,6 +94,15 @@ export default class extends Controller {
         });
 
 
+        info.event.extendedProps.organization_memberships.forEach(function (organization_membership) {
+          $(info.el).find('.fc-event-title-container').append(`
+            <label class="ui mini icon label">
+              ${organization_membership.name}
+            </label>
+          `);
+        });
+
+
         $(info.el).find('.fc-event-title-container')
           .append(
             `<div class="padding-xy-mini">${info.event.extendedProps.description}</div>`
@@ -153,10 +162,10 @@ export default class extends Controller {
     console.log('date click', info);
     //open the event form in a flyout
     let start_time = info.date
-    start_time.setHours(8)
+    // start_time.setHours(8)
 
     let end_time = new Date(start_time)
-    end_time.setHours(9)
+    // end_time.setHours(9)
     let frame_src = `events/new?flyout=true&event[start_time]=${start_time}&event[end_time]=${end_time}`
 
     if (info.resource) {

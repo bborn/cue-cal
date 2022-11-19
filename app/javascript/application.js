@@ -6,8 +6,13 @@ import LocalTime from "local-time"
 import "./controllers"
 import "./channels"
 
-import "trix"
+// import "trix"
+import Trix from 'trix'
 import "@rails/actiontext"
+import '@thoughtbot/trix-mentions-element'
+
+window.Trix = Trix
+window.Trix.Attachment = Trix.models.Attachment
 
 
 // jQuery Initialization Stuff
@@ -55,6 +60,9 @@ const init = function (context) {
   $$(".dropdown.additions").dropdown({
     allowAdditions: true,
     hideAdditions: false,
+    onAdd(addedValue) {
+      $(this).dropdown('hide');
+    },
     className: {
       addition: 'stuck addition'
     }

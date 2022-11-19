@@ -28,8 +28,15 @@
     = f.text_field :name, autofocus: true
   .field
     = f.label :description
-    = f.rich_text_area :description
-  
+    = f.rich_text_area :description    
+    
+    -# %trix-mentions(keys="@" name="query" data-turbo-frame="user_mentions")
+    -#   =turbo_frame_tag "user_mentions", role: "listbox", hiddens: true do
+    -#     .ui.divided.selection.list{style: "width: 30%; border: 1px solid #ccc; border-radius: 5px;"}
+    -#       - current_tenant.organization_memberships.joins(:user).where("users.name ILIKE ?", "%#{params[:query]}%").each do |organization_membership|
+    -#         .item{id: dom_id(organization_membership, :mention), role: 'option', tabindex: "-1", "data-trix-attachment-sgid": organization_membership.attachable_sgid}
+    -#           = render organization_membership.to_trix_content_attachment_partial_path, organization_membership: organization_membership  
+
   -if !resource.production
     .field
       = f.label :production
@@ -57,5 +64,4 @@
       = link_to 'Back', resource_path, class: 'ui button tertiary'    
     -else
       = link_to 'Back', collection_path, class: 'ui button tertiary'    
-
 
