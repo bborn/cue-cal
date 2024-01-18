@@ -9,7 +9,7 @@ https://d.pr/v/8XfODz
 - Manage multiple productions
 - Multiple locations (rooms, stages, etc.)
 - Members and member groups
-- Automaticallty generated first-call times at the top of the calendar
+- Automatically generated first-call times at the top of the calendar
 
 ### To Do:
 
