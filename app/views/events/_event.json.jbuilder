@@ -9,10 +9,14 @@ json.resourceId 0 if event.location_ids.empty?
 json.extendedProps do
   json.groups event.groups
   json.locations event.locations
-  json.organization_memberships event.organization_memberships.as_json(methods: [:name, :avatar])
+
+  json.organization_memberships event.organization_memberships do |om|
+    json.name om.name
+    json.avatar(om.avatar.gsub("\"", ""))
+  end
 end
 
 json.description event.description.body&.to_rendered_html_with_layout
-json.url resource_url(event)
+json.url production_event_url(event.production, event)
 
 # json.extract! event, :backgroundColor, :textColor, :borderColor

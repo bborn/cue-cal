@@ -95,8 +95,10 @@ export default class extends Controller {
 
 
         info.event.extendedProps.organization_memberships.forEach(function (organization_membership) {
+          let avatar = organization_membership.avatar
           $(info.el).find('.fc-event-title-container').append(`
-            <label class="ui mini icon label">
+            <label class="ui mini icon image label">
+              <img src="data:image/svg+xml;charset=utf-8,${avatar}" />
               ${organization_membership.name}
             </label>
           `);

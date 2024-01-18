@@ -35,4 +35,8 @@ class OrganizationMembership < ApplicationRecord
   def to_attachable_partial_path
     "organization_memberships/shared/label"
   end
+
+  # def avatar
+  #   ActionController::Base.escape_javascript(user.avatar)
+  # end
 end
