@@ -30,7 +30,7 @@ Rails.application.routes.draw do
 
   resources :organization_memberships, path: "users"
 
-  match :onboarding, to: "onboarding#index", via: [:get, :post]
+  match :onboarding, to: "onboarding#index", via: [:get, :patch]
 
   # Defines the root path route ("/")
   root "productions#index"

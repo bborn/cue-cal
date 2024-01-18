@@ -1,8 +1,8 @@
-class OnboardingController < ApplicationController
+class OnboardingController < BaseController
   def index
     @organization = current_tenant || current_user.organizations.new(organization_params)
 
-    if request.post?
+    if request.patch?
       @organization.attributes = organization_params
 
       if @organization.save!
